@@ -1,0 +1,48 @@
+README.md
+  h_645a92a2764a6f 12-39
+docs/data-backup.md
+  h_645a92a2764a6f 7-18
+src/app/App.tsx
+  h_645a92a2764a6f 25,180-191,213
+src/features/decks/components/EditorWordRow.tsx
+  h_645a92a2764a6f 7,62-65
+src/features/decks/editor.test.ts
+  h_645a92a2764a6f 7,13-17
+src/features/decks/editor.ts
+  h_645a92a2764a6f 4-7
+src/features/settings/pages/SettingsPage.tsx
+  h_645a92a2764a6f 26,69-84,219-220,222-226
+src/features/study/learning.test.ts
+  h_645a92a2764a6f 14,61-93
+src/features/study/learning.ts
+  h_645a92a2764a6f 204-237
+src/features/study/pages/ReviewPage.tsx
+  h_645a92a2764a6f 4,50-54,70,106-109,155-177,439-462,615-632
+src/services/backup.test.ts
+  h_645a92a2764a6f 2-9,107-137
+src/services/backup.ts
+  h_645a92a2764a6f 25,104-169
+src/services/transfer.ts
+  h_645a92a2764a6f 212-215,220
+src/styles/study.css
+  h_645a92a2764a6f 217-221
+sync/README.md
+  h_645a92a2764a6f 1-5
+sync/english-sync.json
+  h_645a92a2764a6f 1-2262
+sync/viteSync.ts
+  h_645a92a2764a6f 1-121
+vite.config.ts
+  h_645a92a2764a6f 3,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1008d983984411533aba01e3597a3fa083c66f4c",
+  "prompts": {},
+  "humans": {
+    "h_645a92a2764a6f": {
+      "author": "tongtannan.ttn <tongtannan.ttn@digital-engine.com>"
+    }
+  }
+}
