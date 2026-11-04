@@ -1,0 +1,17 @@
+---
+description: 中文释义候选点击展开，其他下拉控件使用桌面 hover 交互
+alwaysApply: true
+---
+
+<!-- GENERATED from AGENTS.md. 编辑共享源后运行 npm run rules:sync。 -->
+
+## 下拉交互
+
+- 适用于现有及新增的所有页面、组件和主题：主题、发音、更多菜单、状态筛选、日期选择和释义候选均须遵守。
+- 桌面端下拉控件除中文释义候选外，统一通过 hover（悬停）展开，不使用 click 作为桌面展开或切换开关；点击菜单项或选项仍用于确认选择。
+- 中文释义候选框是唯一例外：点击输入框展开，悬停和仅获得焦点不自动展开；点击候选确认，点击外部、焦点离开或 Escape 关闭，保留方向键展开与选择及手动填写。此例外不得扩展到主题、发音、更多菜单、状态筛选和日期选择。
+- 菜单类控件复用 `src/shared/components/HoverDropdown.tsx`，其 Ant Design `Dropdown` 固定 `trigger={['hover']}`；页面不直接引入普通 Dropdown。
+- Select、DatePicker 和其他需 hover 的自定义候选框复用 `src/shared/hooks/useHoverPopup.ts`；触发区域绑定 triggerProps，弹层绑定 panelProps，以受控 open 管理显示。中文释义使用 `ChineseField` 自身的点击交互，不修改共享 hover hook。
+- hover 控件的鼠标从触发器移入弹层须保持展开；离开两者后延迟关闭，避免跨越间隙时闪退。选中选项后正常关闭。
+- 保留键盘方向键展开、Escape 关闭、焦点移动和选择；无 hover 能力的触屏设备允许点按兼容，不改变桌面规则。
+- 修改后检查 hover 控件的悬停展开、进入弹层、选项确认、离开关闭及键盘操作；中文释义另外检查悬停不展开、点击展开、外部点击关闭与键盘选择。触屏兼容需检查可用性，不把未验证的行为称为已验收。

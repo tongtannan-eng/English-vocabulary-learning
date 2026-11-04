@@ -1,0 +1,85 @@
+/* settings: maintained by feature; responsive overrides load last. */
+.backup-status-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 13px;
+}
+.backup-status-panel.needs-backup {
+  border-left: 3px solid var(--orange-border);
+}
+.backup-status-panel > div {
+  min-width: 0;
+  flex: 1;
+}
+.backup-status-panel small {
+  display: block;
+  margin-top: 6px;
+  color: var(--secondary);
+  line-height: 1.6;
+}
+.backup-status-panel .backup-status-hint {
+  font-size: 11px;
+  color: var(--muted);
+}
+.settings-card {
+  margin-bottom: 20px;
+}
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+}
+.setting-row + .setting-row {
+  border-top: 1px solid var(--divider);
+}
+.setting-row h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.setting-row p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--secondary);
+  line-height: 1.6;
+}
+.setting-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.shortcut-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 72px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--soft);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.shortcut-reset {
+  padding: 4px 0 18px;
+}
+.settings-note {
+  font-size: 12px;
+  margin-bottom: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+}
+.settings-card .backup-status-panel {
+  margin: 16px 0;
+}

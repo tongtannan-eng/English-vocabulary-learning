@@ -1,0 +1,82 @@
+/* navigation: maintained by feature; responsive overrides load last. */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--divider);
+}
+
+.app-header-inner {
+  width: min(920px, calc(100% - 48px));
+  min-height: 64px;
+  padding-block: 12px;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+.wordmark {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.theme-switcher {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.header-actions {
+  justify-content: flex-end;
+}
+
+.theme-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 1px solid #00000020;
+  border-radius: 50%;
+}
+
+.swatch-classic {
+  background: linear-gradient(90deg, #252525 50%, #f4f4f1 50%);
+}
+.swatch-vivid {
+  background: linear-gradient(135deg, #58cc02 50%, #1cb0f6 50%);
+}
+.theme-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.theme-save-error {
+  display: block;
+  max-width: 220px;
+  margin-top: 6px;
+  color: #a8071a;
+  font-size: 12px;
+}
+
+.wordmark:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.back-to-top.ant-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  box-shadow: 0 4px 16px #00000014;
+}
+
+body:has(.editor-actions-sticky) .back-to-top.ant-btn {
+  bottom: 96px;
+}

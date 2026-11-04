@@ -1,0 +1,402 @@
+/* responsive: maintained by feature; responsive overrides load last. */
+@media (max-width: 720px) {
+  .app-header-inner {
+    align-items: flex-start;
+  }
+  .wordmark {
+    flex-shrink: 0;
+    line-height: 40px;
+  }
+  .header-actions {
+    gap: 8px !important;
+  }
+  .header-actions .ant-btn {
+    padding-inline: 10px;
+  }
+
+  .resume-summary {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .study-overview-main {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .learning-totals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .learning-totals strong {
+    font-size: 18px;
+  }
+
+  .page,
+  .app-header-inner {
+    width: min(920px, calc(100% - 32px));
+  }
+
+  .meta-grid,
+  .word-grid,
+  .study-bar,
+  .study-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-body,
+  .editor-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .deck-side {
+    align-items: flex-start;
+  }
+
+  .study-title {
+    grid-column: 1 / -1;
+    order: -1;
+    text-align: left;
+  }
+
+  .learning-entries {
+    grid-template-columns: 1fr;
+  }
+
+  .word-extras-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spelling-input-row {
+    flex-direction: column;
+  }
+
+  .spelling-diff-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .collection-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .study-nav {
+    grid-template-columns: 0.8fr 1.4fr;
+  }
+
+  .study-nav.has-ratings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .study-nav.has-ratings > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .study-tools,
+  .tool {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .face {
+    padding: 64px 20px 52px;
+  }
+
+  .deck-filter-options {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .deck-date-range {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .deck-status-filter {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .compact-deck-columns {
+    display: none;
+  }
+
+  .compact-deck-row {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 12px 8px;
+    padding: 14px 12px;
+  }
+
+  .compact-deck-date {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .compact-deck-title {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .compact-deck-counts {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .compact-word-count,
+  .compact-unknown-count {
+    font-size: 12px;
+  }
+
+  .mobile-count-label {
+    display: inline;
+    font-weight: 400;
+  }
+
+  .compact-deck-actions {
+    grid-column: 2;
+    grid-row: 2;
+    gap: 2px;
+  }
+
+  .compact-deck-actions .ant-btn {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+
+  .compact-deck-actions .ant-btn-icon-only {
+    width: 26px;
+  }
+
+  .compact-deck-preview {
+    margin-inline: 12px;
+    padding: 12px;
+  }
+
+  .compact-deck-preview li {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 8px;
+  }
+
+  .deck-pagination {
+    justify-content: center;
+  }
+  .collapsible-heading {
+    gap: 10px;
+    padding: 12px;
+  }
+  .panel-toggle {
+    flex-basis: 100%;
+  }
+  .panel-summary {
+    flex-basis: calc(100% - 22px);
+    order: 1;
+    margin-left: 21px;
+  }
+  .collapsible-body:not([hidden]) {
+    padding: 0 12px 12px;
+  }
+  .editor-search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .editor-actions-sticky {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    bottom: 8px;
+    padding: 10px;
+  }
+  .editor-actions-sticky > .ant-typography {
+    flex-basis: 100%;
+    order: -1;
+  }
+  .editor-actions-sticky > .ant-flex {
+    margin-left: auto;
+  }
+  .collapsible-heading .panel-toggle {
+    flex-basis: 0;
+  }
+  .today-panel .collapsible-heading .panel-toggle {
+    flex-basis: 100%;
+  }
+  .bulk-preview-fields {
+    grid-template-columns: 20px 60px minmax(0, 1fr);
+  }
+  .bulk-preview-fields .ant-input:last-child {
+    grid-column: 3;
+  }
+  .editor-search-row > .ant-btn {
+    align-self: flex-start;
+  }
+  .study-page .study-bar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+  .study-page .study-title {
+    grid-column: auto;
+    order: 0;
+    text-align: left;
+    font-size: 12px;
+  }
+  .study-page .study-title strong {
+    font-size: 14px;
+  }
+  .study-page {
+    padding-top: 16px;
+  }
+  .review-settings {
+    margin: 14px 0 10px;
+  }
+  .review-settings-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 10px 12px;
+    color: var(--secondary);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .review-settings .study-tools {
+    display: none;
+    margin: 10px 0 0;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+  .review-settings .study-tools.is-open {
+    display: flex;
+  }
+  .review-settings-note {
+    display: block;
+    font-size: 12px;
+  }
+  .review-instruction-extra {
+    display: none;
+  }
+  .review-instruction {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .study-page .flashcard-scene {
+    margin-top: 12px;
+  }
+  .study-page .resume-notice {
+    margin-top: 10px;
+  }
+  .quick-practice small {
+    display: block;
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+  .trash-card {
+    padding: 14px;
+  }
+  .back-to-top.ant-btn {
+    right: 16px;
+    bottom: 16px;
+  }
+  .app-header-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .app-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid var(--divider);
+    padding-top: 8px;
+  }
+  .app-nav a {
+    flex: 1;
+    text-align: center;
+    padding-inline: 5px;
+    font-size: 13px;
+  }
+  .header-actions {
+    margin-left: auto;
+  }
+  .practice-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .setting-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .settings-card .ant-card-body {
+    padding: 16px;
+  }
+  .settings-card .ant-segmented,
+  .setting-controls {
+    max-width: 100%;
+  }
+  .settings-page > .ant-alert {
+    margin-bottom: 16px;
+  }
+  .settings-card .backup-status-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .settings-card .backup-status-panel > div {
+    width: 100%;
+  }
+  .editor-delete-undo {
+    flex-wrap: wrap;
+  }
+  .editor-delete-undo .ant-alert-actions {
+    margin: 8px 0 0 auto;
+  }
+  .mistakes-filters {
+    flex-direction: column;
+  }
+  .mistakes-filters > .ant-input-affix-wrapper {
+    flex: auto;
+    min-width: 0;
+  }
+  .mistakes-filters > .ant-segmented {
+    align-self: flex-start;
+    max-width: 100%;
+  }
+  .mistake-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .compact-word-card .word-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .word-row-heading {
+    align-items: flex-start;
+  }
+  .word-row-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .word-extra-toggle {
+    max-width: 180px;
+  }
+  .error-practice-actions > .ant-btn {
+    flex: 1;
+  }
+}

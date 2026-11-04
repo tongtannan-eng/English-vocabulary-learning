@@ -1,0 +1,38 @@
+{
+  "name": "english",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "npm run rules:check && oxlint && npm run format:check",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "test": "vitest run && npm run test:rules",
+    "preview": "vite preview",
+    "rules:sync": "node scripts/ai-rules.mjs --sync",
+    "rules:check": "node scripts/ai-rules.mjs --check",
+    "test:rules": "node --test scripts/ai-rules.verify.mjs",
+    "report:bundle": "node scripts/report-bundle.mjs"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "antd": "^6.6.8",
+    "dayjs": "^1.11.23",
+    "diff": "^9.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.89.0",
+    "prettier": "^3.9.10",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

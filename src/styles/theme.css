@@ -1,0 +1,65 @@
+/* theme: maintained by feature; responsive overrides load last. */
+[data-theme='vivid'] .page .ant-alert-info {
+  background: var(--blue-bg);
+  border-color: var(--blue-border);
+}
+[data-theme='vivid'] .page .ant-alert-info .ant-alert-icon {
+  color: var(--blue-text);
+}
+[data-theme='vivid'] .resume-summary {
+  background: var(--purple-bg);
+  border-color: var(--purple-border);
+}
+[data-theme='vivid'] .resume-summary strong {
+  color: var(--purple-text);
+}
+[data-theme='vivid'] .wordmark {
+  color: var(--primary);
+}
+[data-theme='vivid'] .study-overview {
+  border-top-color: #58cc02;
+}
+[data-theme='vivid']
+  .ant-btn-primary:not(.ant-btn-dangerous):not(:disabled):not(.ant-btn-disabled) {
+  background: var(--button-bg);
+  border-color: var(--button-border);
+  border-bottom-width: 1px;
+  color: var(--button-text);
+  font-weight: 400;
+}
+[data-theme='vivid']
+  .ant-btn-primary:not(.ant-btn-dangerous):not(:disabled):not(.ant-btn-disabled):hover,
+[data-theme='vivid']
+  .ant-btn-primary:not(.ant-btn-dangerous):not(:disabled):not(.ant-btn-disabled):active {
+  background: var(--button-hover);
+  border-color: var(--button-border);
+  color: var(--button-text);
+}
+
+[data-theme='vivid'] .face-front {
+  border-top: 5px solid #58b90a;
+}
+[data-theme='vivid'] .face-back {
+  background: var(--blue-bg);
+  border-color: var(--blue-border);
+  border-top: 5px solid #1c94d0;
+}
+[data-theme='vivid'] .face-kicker {
+  color: var(--primary);
+  font-weight: 600;
+}
+[data-theme='vivid'] .rating-unknown {
+  background: var(--orange-bg);
+  color: var(--orange-text);
+  border-color: var(--orange-border);
+}
+[data-theme='vivid'] .word-card:focus-within {
+  border-color: var(--primary);
+}
+.ant-btn,
+.ant-btn:hover,
+.ant-btn:focus,
+.ant-btn:active {
+  font-weight: 400;
+  box-shadow: none;
+}

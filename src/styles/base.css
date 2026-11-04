@@ -1,0 +1,168 @@
+/* base: maintained by feature; responsive overrides load last. */
+:root {
+  color-scheme: light;
+  --canvas: #f5f5f4;
+  --surface: #fff;
+  --text: #202020;
+  --secondary: #5f5f5b;
+  --border: #d6d6d1;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text);
+}
+
+.page {
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 36px 0 72px;
+}
+
+.page-head {
+  margin-bottom: 28px;
+}
+
+.page-head h2,
+.page-head h3 {
+  margin: 0;
+}
+
+.page-head .ant-typography {
+  margin-bottom: 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.retry-notice {
+  margin-top: 16px;
+}
+
+.page .ant-alert-info {
+  border-color: var(--border);
+  background: var(--soft);
+  color: var(--text);
+}
+
+.page .ant-alert-info .ant-alert-icon {
+  color: var(--secondary);
+}
+.hover-dropdown {
+  display: inline-flex;
+}
+.entry-weekly h4.ant-typography {
+  color: var(--blue-text);
+}
+.entry-vocabulary h4.ant-typography {
+  color: var(--orange-text);
+}
+.collapsible-section {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  margin-bottom: 12px;
+}
+.collapsible-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+.panel-toggle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  min-width: 0;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.panel-toggle > .anticon {
+  font-size: 11px;
+  transition: transform 0.15s ease;
+}
+.panel-toggle > .is-open {
+  transform: rotate(90deg);
+}
+.panel-title {
+  font-size: 15px;
+}
+.panel-summary {
+  color: var(--secondary);
+  font-size: 12px;
+}
+.panel-toggle-label {
+  color: var(--secondary);
+  font-size: 12px;
+  margin-left: auto;
+}
+.panel-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.panel-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.collapsible-body:not([hidden]) {
+  padding: 0 16px 16px;
+}
+.app-nav {
+  display: flex;
+  gap: 6px;
+  margin-right: auto;
+}
+.app-nav a {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.app-nav a:hover {
+  background: var(--soft);
+  color: var(--text);
+}
+.app-nav a[aria-current='page'] {
+  background: var(--task-bg);
+  color: var(--task-text);
+}
+.app-nav a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.page-loading {
+  min-height: 40vh;
+  color: var(--secondary);
+}
+.page-loading button {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font: inherit;
+}
