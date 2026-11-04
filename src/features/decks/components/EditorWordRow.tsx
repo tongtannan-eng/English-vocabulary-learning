@@ -4,6 +4,7 @@ import type { DraftWord } from '../../../shared/types.ts'
 import type { DuplicateMatch } from '../duplicates.ts'
 import { formatDate } from '../../../shared/utils/format.ts'
 import { ChineseField } from './ChineseField.tsx'
+import { updateEditorEnglish } from '../editor.ts'
 
 export function EditorWordRow({
   word,
@@ -58,7 +59,10 @@ export function EditorWordRow({
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck
-            onChange={(event) => onChange({ english: event.target.value })}
+            onChange={(event) => {
+              const next = updateEditorEnglish(word, event.target.value)
+              onChange({ english: next.english, chinese: next.chinese })
+            }}
             onKeyDown={(event) => {
               if (event.key === 'Enter') event.preventDefault()
             }}

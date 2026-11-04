@@ -1,5 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { createBackup, importBackup, mergeBackup } from './backup.ts'
+import {
+  createBackup,
+  exportSyncBackup,
+  importBackup,
+  importSyncBackup,
+  mergeBackup,
+} from './backup.ts'
+import { BACKUP_STATUS_KEY } from './backupStatus.ts'
 import { parseDeckFile } from './transfer.ts'
 import {
   loadStudyState,
@@ -95,6 +102,37 @@ describe('complete backup import/export', () => {
   afterEach(() => {
     invalidateDeckListView()
     vi.unstubAllGlobals()
+  })
+
+  it('exports a complete backup and handles version conflicts without recording success', async () => {
+    saveStudyState({ decks: [deck], records: [], sessions: {} })
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(new Response(null, { status: 409 }))
+      .mockResolvedValueOnce(
+        new Response(null, { status: 204, headers: { 'X-Sync-Revision': 'abc' } }),
+      )
+    vi.stubGlobal('fetch', fetchMock)
+    expect(await exportSyncBackup()).toMatchObject({ type: 'error' })
+    expect(local.has(BACKUP_STATUS_KEY)).toBe(false)
+    expect(await exportSyncBackup()).toMatchObject({ type: 'success' })
+    const request = fetchMock.mock.calls[1]![1] as RequestInit
+    expect(parseDeckFile(String(request.body))).toMatchObject({ scope: 'full', decks: [deck] })
+    expect(local.has(BACKUP_STATUS_KEY)).toBe(true)
+  })
+
+  it('records the file revision only after a successful validated import', async () => {
+    const file = createBackup()
+    const response = () =>
+      new Response(JSON.stringify(file), { headers: { 'X-Sync-Revision': 'rev' } })
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockImplementation(async () => response()),
+    )
+    expect(await importSyncBackup(() => ({ error: '写入失败' }))).toEqual({ error: '写入失败' })
+    expect(local.has('english-daily-sync-revision')).toBe(false)
+    expect(await importSyncBackup(() => ({ message: '已导入' }))).toEqual({ message: '已导入' })
+    expect(local.get('english-daily-sync-revision')).toBe('rev')
   })
 
   function populate(): BackupFile {

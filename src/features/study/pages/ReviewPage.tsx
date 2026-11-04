@@ -1,7 +1,7 @@
 import { hasReviewWork } from '../reset.ts'
 import { ThemeSwitcher } from '../../../shared/components/ThemeSwitcher.tsx'
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
-import { Alert, Button, Flex, Progress, Modal, Segmented, Tag, Typography } from 'antd'
+import { Alert, Button, Flex, Input, Progress, Modal, Segmented, Tag, Typography } from 'antd'
 import { SpeakButton } from '../components/SpeakButton.tsx'
 import { SpellingPractice } from '../components/SpellingPractice.tsx'
 import { formatDeckHeading } from '../../../shared/utils/format.ts'
@@ -47,6 +47,11 @@ interface Props {
   ) => string | void
   onCheckpoint: (key: string, checkpoint: ReviewCheckpoint | null) => string | void
   onSpelling: (record: LearningRecord, checkpoint: ReviewCheckpoint) => string | void
+  onWordDetails: (
+    word: ReviewWord,
+    checkpoint: ReviewCheckpoint,
+    details: { collocations: string[]; notes: string },
+  ) => ReviewCheckpoint | string
 }
 
 export function ReviewPage({
@@ -62,6 +67,7 @@ export function ReviewPage({
   onRate,
   onCheckpoint,
   onSpelling,
+  onWordDetails,
   initialFront,
 }: Props) {
   function fresh(
@@ -97,6 +103,10 @@ export function ReviewPage({
   const [pendingReset, setPendingReset] = useState<'restart' | ReviewOrder | null>(null)
   const [resetError, setResetError] = useState('')
   const [error, setError] = useState('')
+  const [editOpen, setEditOpen] = useState(false)
+  const [editCollocations, setEditCollocations] = useState('')
+  const [editNotes, setEditNotes] = useState('')
+  const [editError, setEditError] = useState('')
   const [resumeNotice, setResumeNotice] = useState(Boolean(loaded || saved))
   const shortcuts = useSyncExternalStore(subscribeShortcuts, loadShortcuts, loadShortcuts)
   const { session, front, order, flipped } = checkpoint
@@ -140,6 +150,29 @@ export function ReviewPage({
   function adopt(next: ReviewCheckpoint) {
     checkpointRef.current = next
     setCheckpoint(next)
+  }
+
+  function saveWordDetails() {
+    if (!word) return
+    window.clearTimeout(saveTimerRef.current)
+    const result = onWordDetails(
+      word,
+      { ...checkpointRef.current, updatedAt: Date.now() },
+      {
+        collocations: editCollocations
+          .split('\n')
+          .map((line) => line.trim())
+          .filter(Boolean),
+        notes: editNotes.trim(),
+      },
+    )
+    if (typeof result === 'string') {
+      setEditError(result)
+      return
+    }
+    adopt(result)
+    setError('')
+    setEditOpen(false)
   }
 
   function update(next: ReviewCheckpoint, defer = false) {
@@ -404,6 +437,30 @@ export function ReviewPage({
   return (
     <main className="page study-page">
       <Modal
+        open={editOpen}
+        title="编辑单词补充信息"
+        okText="保存"
+        cancelText="取消"
+        onCancel={() => setEditOpen(false)}
+        onOk={saveWordDetails}
+      >
+        <label htmlFor="review-collocations">常用搭配或例句（每行一条）</label>
+        <Input.TextArea
+          id="review-collocations"
+          rows={4}
+          value={editCollocations}
+          onChange={(event) => setEditCollocations(event.target.value)}
+        />
+        <label htmlFor="review-notes">个人备注</label>
+        <Input.TextArea
+          id="review-notes"
+          rows={4}
+          value={editNotes}
+          onChange={(event) => setEditNotes(event.target.value)}
+        />
+        {editError ? <Alert type="error" showIcon title={editError} /> : null}
+      </Modal>
+      <Modal
         open={pendingReset !== null}
         title={pendingReset === 'restart' ? '重新开始本轮复习？' : '切换顺序并重新开始？'}
         okText={pendingReset === 'restart' ? '重新开始' : '切换并重开'}
@@ -555,8 +612,24 @@ export function ReviewPage({
       ) : word ? (
         <>
           <div className="review-source">
-            <Tag>{formatDeckHeading(word.deckDate)}</Tag>
-            <Typography.Text type="secondary">{word.deckTitle || '每日单词'}</Typography.Text>
+            <div>
+              <Tag>{formatDeckHeading(word.deckDate)}</Tag>
+              <Typography.Text type="secondary">{word.deckTitle || '每日单词'}</Typography.Text>
+            </div>
+            {flipped ? (
+              <Button
+                type="text"
+                size="small"
+                onClick={() => {
+                  setEditCollocations((word.collocations ?? []).join('\n'))
+                  setEditNotes(word.notes ?? '')
+                  setEditError('')
+                  setEditOpen(true)
+                }}
+              >
+                编辑例句和备注
+              </Button>
+            ) : null}
           </div>
           <div className={dictation ? 'flashcard-scene is-dictation' : 'flashcard-scene'}>
             <SpeakButton

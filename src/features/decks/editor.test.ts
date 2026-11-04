@@ -4,11 +4,17 @@ import {
   EDITOR_PAGE_SIZE,
   deleteEditorWord,
   restoreEditorWord,
+  updateEditorEnglish,
 } from './editor.ts'
 import { normalizeDraft } from './deck.ts'
 import { isEditorDraft } from '../../services/drafts.ts'
 
 describe('large-card editing', () => {
+  it('clears the previous meaning when English changes, while preserving other fields', () => {
+    const word = { id: 'a', english: 'apple', chinese: '苹果', notes: '备注' }
+    expect(updateEditorEnglish(word, 'apples')).toEqual({ ...word, english: 'apples', chinese: '' })
+    expect(updateEditorEnglish(word, 'apple')).toEqual(word)
+  })
   const words = Array.from({ length: 27 }, (_, index) => ({
     id: `w-${index}`,
     english: `word${index}`,

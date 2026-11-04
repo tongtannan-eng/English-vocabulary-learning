@@ -22,7 +22,7 @@ import {
   SPEECH_KEY,
 } from './storage.ts'
 import { DRAFTS_KEY, loadAllDrafts } from './drafts.ts'
-import { describeImport, downloadDataFile, mergeDecks } from './transfer.ts'
+import { describeImport, downloadDataFile, mergeDecks, parseDeckFile } from './transfer.ts'
 import { mergePhrases } from '../features/phrases/phrases.ts'
 import { mergeSentences } from '../features/sentences/sentences.ts'
 import { mergeLearningRecords, pruneCheckpoints } from '../features/study/learning.ts'
@@ -98,6 +98,72 @@ export function exportBackup(deckIds?: readonly string[]): {
     }
   } catch {
     return { type: 'error', message: '备份文件生成失败，请重试。' }
+  }
+}
+
+const SYNC_REVISION_KEY = 'english-daily-sync-revision'
+
+export async function importSyncBackup(
+  onImport: (file: ParsedDeckFile) => { message: string } | { error: string },
+) {
+  const response = await fetch('/__local_sync', { cache: 'no-store' })
+  if (response.status === 404) return { error: '同步文件不存在，请先在有数据的电脑导出。' }
+  if (!response.ok) return { error: '无法读取同步文件，请确认应用通过本地项目启动。' }
+  const parsed = parseDeckFile(await response.text())
+  if ('error' in parsed) return parsed
+  if (parsed.scope !== 'full') return { error: '同步文件不是完整备份。' }
+  const result = onImport(parsed)
+  if (!('error' in result)) {
+    const revision = response.headers.get('X-Sync-Revision')
+    if (!revision) return { error: '数据已导入，但无法确认文件版本，请重试。' }
+    try {
+      localStorage.setItem(SYNC_REVISION_KEY, revision)
+    } catch {
+      return { error: '数据已导入，但无法保存同步状态，请检查浏览器存储。' }
+    }
+  }
+  return result
+}
+
+export async function exportSyncBackup(): Promise<{
+  type: 'success' | 'warning' | 'error'
+  message: string
+}> {
+  try {
+    const file = createBackup()
+    file.backupStatus = {
+      exportedAt: file.exportedAt,
+      origin: 'local',
+      snapshot: backupSnapshot(file),
+    }
+    const response = await fetch('/__local_sync', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Sync-Revision': localStorage.getItem(SYNC_REVISION_KEY) ?? 'missing',
+      },
+      body: `${JSON.stringify(file, null, 2)}\n`,
+    })
+    if (response.status === 409)
+      return { type: 'error', message: '同步文件已变化，请先导入 Git 同步文件，再重新导出。' }
+    if (!response.ok)
+      return { type: 'error', message: '同步文件保存失败，请确认应用通过本地项目启动。' }
+    const revision = response.headers.get('X-Sync-Revision')
+    if (!revision)
+      return { type: 'warning', message: '同步文件已保存，但无法记录版本；下次导出前请先导入。' }
+    try {
+      localStorage.setItem(SYNC_REVISION_KEY, revision)
+    } catch {
+      return { type: 'warning', message: '同步文件已保存，但无法记录版本；下次导出前请先导入。' }
+    }
+    if (!saveBackupStatus(file.backupStatus))
+      return { type: 'warning', message: '同步文件已生成，但备份记录未能保存。' }
+    return {
+      type: 'success',
+      message: '同步文件已保存到 sync/english-sync.json，请通过 Git 提交并推送。',
+    }
+  } catch {
+    return { type: 'error', message: '同步文件保存失败，请检查文件权限或重试。' }
   }
 }
 

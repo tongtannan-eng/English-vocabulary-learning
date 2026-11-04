@@ -23,7 +23,7 @@ import {
   subscribeSpeechAccent,
 } from '../../../services/storage.ts'
 import { ShortcutEditor } from '../components/ShortcutEditor.tsx'
-import { exportBackup } from '../../../services/backup.ts'
+import { exportBackup, exportSyncBackup, importSyncBackup } from '../../../services/backup.ts'
 import { parseDeckFile } from '../../../services/transfer.ts'
 import type { ParsedDeckFile } from '../../../services/backupTypes.ts'
 import type { FrontSide, ReviewOrder, ReviewPrefs } from '../../../shared/types.ts'
@@ -65,6 +65,22 @@ export function SettingsPage({
   function backup() {
     const result = exportBackup()
     setNotice({ type: result.type, text: result.message })
+  }
+  async function exportSync() {
+    const result = await exportSyncBackup()
+    if (result) setNotice({ type: result.type, text: result.message })
+  }
+  async function importSync() {
+    try {
+      const result = await importSyncBackup(onImport)
+      setNotice(
+        'error' in result
+          ? { type: 'error', text: result.error }
+          : { type: 'success', text: result.message },
+      )
+    } catch {
+      setNotice({ type: 'error', text: '读取同步文件失败，请确认应用通过本地项目启动。' })
+    }
   }
   function importFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
@@ -200,7 +216,14 @@ export function SettingsPage({
             <Button icon={<UploadOutlined />} onClick={() => fileRef.current?.click()}>
               导入备份
             </Button>
+            <Button onClick={exportSync}>导出 Git 同步文件</Button>
+            <Button onClick={importSync}>导入 Git 同步文件</Button>
           </Flex>
+          <Typography.Paragraph className="settings-note" type="secondary">
+            多台电脑同步：先拉取 Git 更新并导入同步文件；学习后导出，再提交并推送。
+            文件固定保存在项目的 sync/english-sync.json，无需选择路径；此功能需要通过本地项目启动。
+            备份包含学习记录和偏好，提交到 GitHub 前请确认仓库的可见性。
+          </Typography.Paragraph>
           <input
             ref={fileRef}
             type="file"

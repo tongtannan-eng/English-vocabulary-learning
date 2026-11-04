@@ -201,6 +201,40 @@ export function pruneCheckpoints(state: StudyState): StudyState {
   }
 }
 
+export function updateReviewWordDetails(
+  state: StudyState,
+  word: ReviewWord,
+  checkpoint: ReviewCheckpoint,
+  details: { collocations: string[]; notes: string },
+  now = Date.now(),
+): StudyState | null {
+  const deck = state.decks.find((item) => item.id === word.deckId)
+  const current = deck?.words.find((item) => item.id === word.id)
+  if (
+    !deck ||
+    !current ||
+    current.english !== word.english ||
+    current.chinese !== word.chinese ||
+    (current.notes ?? '') !== (word.notes ?? '') ||
+    JSON.stringify(current.collocations ?? []) !== JSON.stringify(word.collocations ?? [])
+  )
+    return null
+  const updated = {
+    ...deck,
+    updatedAt: Math.max(now, deck.updatedAt + 1),
+    words: deck.words.map((item) =>
+      item.id === word.id
+        ? { ...item, collocations: details.collocations, notes: details.notes }
+        : item,
+    ),
+  }
+  return pruneCheckpoints({
+    ...state,
+    decks: state.decks.map((item) => (item.id === deck.id ? updated : item)),
+    sessions: { ...state.sessions, [checkpoint.key]: checkpoint },
+  })
+}
+
 export function withCheckpoint(
   state: StudyState,
   key: string,

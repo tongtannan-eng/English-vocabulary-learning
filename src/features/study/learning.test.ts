@@ -11,6 +11,7 @@ import {
   mergeLearningRecords,
   scheduleWord,
   withCheckpoint,
+  updateReviewWordDetails,
 } from './learning.ts'
 import type { ReviewCheckpoint, StudyState } from './learning.ts'
 import { collectReviewWords, createReviewSession, rateReview } from './review.ts'
@@ -57,6 +58,39 @@ function checkpoint(front: ReviewCheckpoint['front'] = 'english'): ReviewCheckpo
 }
 
 describe('spaced review and daily tasks', () => {
+  it('updates review details while retaining queue position and study state', () => {
+    const saved = { ...checkpoint(), answer: 'apple', flipped: true }
+    const state: StudyState = { decks: [deck], records: [], sessions: { [saved.key]: saved } }
+    const next = updateReviewWordDetails(
+      state,
+      saved.session.sequence[0]!,
+      saved,
+      {
+        collocations: ['an apple a day'],
+        notes: '水果',
+      },
+      now + 1,
+    )!
+    expect(next.decks[0]!.words[0]).toMatchObject({
+      collocations: ['an apple a day'],
+      notes: '水果',
+    })
+    expect(next.sessions[saved.key]).toMatchObject({
+      answer: 'apple',
+      flipped: true,
+      session: { cursor: 0 },
+    })
+    expect(
+      hydrateCheckpoint(next.sessions[saved.key], next.decks)?.session.sequence[0]?.notes,
+    ).toBe('水果')
+    expect(next.records).toEqual([])
+    expect(
+      updateReviewWordDetails(next, saved.session.sequence[0]!, saved, {
+        collocations: [],
+        notes: '',
+      }),
+    ).toBeNull()
+  })
   it('advances across days, never accelerates on same-day repetitions, and resets after forgetting', () => {
     const first = scheduleWord(baseWord, 'known', true, now)
     expect(first.reviewStage).toBe(1)

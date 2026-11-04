@@ -22,6 +22,7 @@ import {
   getTodayWords,
   pruneCheckpoints,
   withCheckpoint,
+  updateReviewWordDetails,
 } from '../features/study/learning.ts'
 import type {
   LearningRecord,
@@ -176,6 +177,18 @@ function AppPage() {
     if (!commit(next)) return '作答记录保存失败，请重试，当前答案尚未计入记录。'
   }
 
+  function handleWordDetails(
+    word: ReviewWord,
+    checkpoint: ReviewCheckpoint,
+    details: { collocations: string[]; notes: string },
+  ): ReviewCheckpoint | string {
+    const next = updateReviewWordDetails(loadStudyState(), word, checkpoint, details)
+    const updated = next?.sessions[checkpoint.key]
+    if (!next || !updated) return '单词或复习内容已修改或删除，请刷新后重试。'
+    if (!commit(next)) return '保存失败，请检查浏览器本地存储后重试。'
+    return updated
+  }
+
   function review(source: {
     key: string
     path: string
@@ -197,6 +210,7 @@ function AppPage() {
         onRate={handleRate}
         onCheckpoint={handleCheckpoint}
         onSpelling={handleSpelling}
+        onWordDetails={handleWordDetails}
       />
     )
   }

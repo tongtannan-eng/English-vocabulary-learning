@@ -209,12 +209,15 @@ export function downloadDeckFile(
   downloadDataFile(payload)
 }
 
-export function downloadDataFile(payload: unknown): void {
+export function downloadDataFile(
+  payload: unknown,
+  filename = `每日单词-${fileStamp(new Date())}.json`,
+): void {
   const blob = new Blob([`${JSON.stringify(payload, null, 2)}\n`], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
-  link.download = `每日单词-${fileStamp(new Date())}.json`
+  link.download = filename
   document.body.append(link)
   link.click()
   link.remove()

@@ -1,6 +1,10 @@
 import type { DeletedDraftWord, DraftWord } from '../../shared/types.ts'
 
 export const EDITOR_PAGE_SIZE = 10
+export function updateEditorEnglish(word: DraftWord, english: string): DraftWord {
+  return english === word.english ? word : { ...word, english, chinese: '' }
+}
+
 export function filterEditorWords(
   words: readonly DraftWord[],
   query: string,
