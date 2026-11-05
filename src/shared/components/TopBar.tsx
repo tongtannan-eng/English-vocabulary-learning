@@ -55,7 +55,7 @@ export function TopBar({
           {(
             [
               ['/', '学习首页'],
-              ['/sentences', '句子'],
+              ['/sentences', '语句'],
               ['/phrases', '词组'],
               ['/practice', '练习中心'],
               ['/settings', '偏好与数据'],

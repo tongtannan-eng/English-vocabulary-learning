@@ -374,3 +374,10 @@
 .compact-word-extras[hidden] {
   display: none;
 }
+.editor-shortcut-hint {
+  margin: 0;
+  /* The sticky bar extends its background 16px below its edge. */
+  padding-top: 32px;
+  font-size: 12px;
+  line-height: 1.6;
+}

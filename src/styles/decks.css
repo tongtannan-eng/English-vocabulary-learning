@@ -235,6 +235,14 @@
   color: var(--secondary);
 }
 
+.compact-preview-word {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
 .deck-pagination {
   display: flex;
   justify-content: flex-end;

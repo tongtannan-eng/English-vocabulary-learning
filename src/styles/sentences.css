@@ -11,6 +11,10 @@
   gap: 8px;
 }
 
+.entry-shortcut-hint {
+  font-size: 12px;
+}
+
 .entry-table .ant-table-cell {
   vertical-align: top;
 }

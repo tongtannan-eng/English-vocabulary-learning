@@ -26,6 +26,8 @@ describe('sentence table', () => {
       updatedAt: 2,
     })
     expect(addSentence([], '   ', '')).toBeNull()
+    expect(addSentence([], 'Hello.', '   ')).toBeNull()
+    expect(updateSentence(added!, added![0]!.id, 'Hello.', ' ')).toBeNull()
     const edited = updateSentence(
       added!,
       added![0]!.id,
@@ -104,5 +106,16 @@ describe('sentence backup', () => {
     const before = backupSnapshot(createBackup())
     saveStudyState({ ...loadStudyState(), sentences: [sentence] })
     expect(compareBackup(before, backupSnapshot(createBackup())).pending).toBe(true)
+  })
+
+  it('preserves legacy sentences without Chinese when loading and importing backups', () => {
+    const legacySentence = { ...sentence, chinese: '' }
+    saveStudyState({ decks: [], records: [], sessions: {}, sentences: [legacySentence] })
+    const file = createBackup()
+    expect(loadStudyState().sentences).toEqual([legacySentence])
+    const parsed = parseDeckFile(JSON.stringify(file))
+    if ('error' in parsed) throw new Error(parsed.error)
+    expect(importBackup(parsed)).not.toHaveProperty('error')
+    expect(loadStudyState().sentences).toEqual([legacySentence])
   })
 })

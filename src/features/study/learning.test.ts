@@ -12,9 +12,10 @@ import {
   scheduleWord,
   withCheckpoint,
   updateReviewWordDetails,
+  pruneCheckpoints,
 } from './learning.ts'
 import type { ReviewCheckpoint, StudyState } from './learning.ts'
-import { collectReviewWords, createReviewSession, rateReview } from './review.ts'
+import { collectReviewWords, createReviewSession, rateReview, textReviewDeck } from './review.ts'
 import { addDays, toISODate } from '../../shared/utils/format.ts'
 import { loadStudyState, saveStudyState } from '../../services/storage.ts'
 import { parseDeckFile } from '../../services/transfer.ts'
@@ -58,6 +59,49 @@ function checkpoint(front: ReviewCheckpoint['front'] = 'english'): ReviewCheckpo
 }
 
 describe('spaced review and daily tasks', () => {
+  it.each(['phrases', 'sentences'] as const)(
+    'restores %s review and discards edited or deleted entries',
+    (kind) => {
+      const item = { id: 'text-1', english: 'take care', chinese: '', createdAt: 1, updatedAt: 1 }
+      const words = collectReviewWords([textReviewDeck(kind, [item])])
+      const saved: ReviewCheckpoint = {
+        ...checkpoint(),
+        key: `random:${kind}:5`,
+        path: `/review-random/${kind}/5`,
+        initialWords: words,
+        session: createReviewSession(words, 'sequential'),
+        randomSeen: [JSON.stringify([words[0]!.deckId, item.id])],
+      }
+      const state: StudyState = {
+        decks: [],
+        records: [],
+        sessions: { [saved.key]: saved },
+        [kind]: [item],
+      }
+      expect(isCheckpoint(saved)).toBe(true)
+      expect(hydrateCheckpoint(saved, [], state)?.initialWords[0]?.chinese).toBe('')
+      expect(pruneCheckpoints(state).sessions[saved.key]).toBeDefined()
+      expect(
+        pruneCheckpoints({ ...state, [kind]: [{ ...item, english: 'changed' }] }).sessions[
+          saved.key
+        ],
+      ).toBeUndefined()
+      expect(pruneCheckpoints({ ...state, [kind]: [] }).sessions[saved.key]).toBeUndefined()
+      expect(parseHash(`#${saved.path}`)).toEqual({ name: 'review-random-text', kind, limit: 5 })
+    },
+  )
+  it('restores and validates monthly and random checkpoints with drawn-word history', () => {
+    const saved = {
+      ...checkpoint(),
+      key: 'random:5',
+      path: '/review-random/5',
+      randomSeen: ['["day","apple"]'],
+    }
+    expect(isCheckpoint(saved)).toBe(true)
+    expect(hydrateCheckpoint(saved, [deck])?.randomSeen).toEqual(saved.randomSeen)
+    expect(isCheckpoint({ ...saved, randomSeen: [1] })).toBe(false)
+    expect(isCheckpoint({ ...saved, path: '/review-monthly/2026-10-01' })).toBe(true)
+  })
   it('updates review details while retaining queue position and study state', () => {
     const saved = { ...checkpoint(), answer: 'apple', flipped: true }
     const state: StudyState = { decks: [deck], records: [], sessions: { [saved.key]: saved } }

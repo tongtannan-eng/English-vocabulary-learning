@@ -1,11 +1,11 @@
 /* base: maintained by feature; responsive overrides load last. */
 :root {
   color-scheme: light;
-  --canvas: #f5f5f4;
+  --canvas: #f5faef;
   --surface: #fff;
-  --text: #202020;
-  --secondary: #5f5f5b;
-  --border: #d6d6d1;
+  --text: #24351d;
+  --secondary: #52634b;
+  --border: #cfdfc1;
 }
 
 body {

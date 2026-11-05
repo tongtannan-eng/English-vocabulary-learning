@@ -27,7 +27,7 @@ export function isEditorDraft(value: unknown): value is EditorDraft {
   }
   return (
     typeof draft.date === 'string' &&
-    Boolean(parseISODate(draft.date)) &&
+    (draft.date === '' || Boolean(parseISODate(draft.date))) &&
     typeof draft.title === 'string' &&
     typeof draft.updatedAt === 'number' &&
     Number.isFinite(draft.updatedAt) &&

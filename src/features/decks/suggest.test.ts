@@ -1,7 +1,65 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { suggestionPlacement } from './suggestionPopup.ts'
+import { selectFirstMeaning } from './suggest.ts'
 
 afterEach(() => vi.unstubAllGlobals())
+describe('English enter selects the first meaning', () => {
+  const dictionary = { words: { apple: 'n. 苹果, 家伙' }, forms: {} }
+  it('selects the first candidate and leaves unmatched entries unchanged', async () => {
+    const select = vi.fn()
+    expect(
+      await selectFirstMeaning(
+        'apple',
+        () => true,
+        select,
+        async () => dictionary,
+      ),
+    ).toBe('selected')
+    expect(select).toHaveBeenCalledWith('n. 苹果, 家伙')
+    select.mockClear()
+    expect(
+      await selectFirstMeaning(
+        'unknown',
+        () => true,
+        select,
+        async () => dictionary,
+      ),
+    ).toBe('missing')
+    expect(select).not.toHaveBeenCalled()
+  })
+  it('does not overwrite later edits when a delayed lookup completes', async () => {
+    let resolve!: (value: typeof dictionary) => void
+    let current = true
+    const select = vi.fn()
+    const pending = selectFirstMeaning(
+      'apple',
+      () => current,
+      select,
+      () =>
+        new Promise((done) => {
+          resolve = done
+        }),
+    )
+    current = false
+    resolve(dictionary)
+    expect(await pending).toBe('stale')
+    expect(select).not.toHaveBeenCalled()
+  })
+  it('propagates dictionary failures for the caller to show a retry message', async () => {
+    const select = vi.fn()
+    await expect(
+      selectFirstMeaning(
+        'apple',
+        () => true,
+        select,
+        async () => {
+          throw new Error('offline')
+        },
+      ),
+    ).rejects.toThrow('offline')
+    expect(select).not.toHaveBeenCalled()
+  })
+})
 describe('dictionary request recovery', () => {
   it('shares a pending request and allows retry after an HTTP failure', async () => {
     vi.resetModules()

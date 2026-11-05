@@ -2,7 +2,7 @@ import { rememberRating } from './mistakes.ts'
 import type { MistakeEntry } from './mistakes.ts'
 import type { TrashEntry } from '../../services/trashTypes.ts'
 import { addDays, parseISODate, todayISO, toISODate } from '../../shared/utils/format.ts'
-import { collectReviewWords, reviewWordKey } from './review.ts'
+import { collectReviewWords, reviewWordKey, textReviewDeck } from './review.ts'
 import type { ReviewSession } from './review.ts'
 import type {
   Deck,
@@ -37,6 +37,7 @@ export interface ReviewCheckpoint {
   result: SpellingAttempt | null
   firstAttempts: Record<string, SpellingAttempt>
   shownAnswers: string[]
+  randomSeen?: string[]
   updatedAt: number
 }
 
@@ -171,9 +172,13 @@ export function mergeLearningRecords(
 export function hydrateCheckpoint(
   checkpoint: ReviewCheckpoint | undefined,
   decks: readonly Deck[],
+  texts?: Pick<StudyState, 'sentences' | 'phrases'>,
 ): ReviewCheckpoint | null {
   if (!checkpoint || checkpoint.session.phase === 'done') return null
-  const current = new Map(collectReviewWords(decks).map((word) => [reviewWordKey(word), word]))
+  const textKind = /^\/review-random\/(phrases|sentences)\//.exec(checkpoint.path)?.[1] as
+    'phrases' | 'sentences' | undefined
+  const source = textKind && texts ? [textReviewDeck(textKind, texts[textKind] ?? [])] : decks
+  const current = new Map(collectReviewWords(source).map((word) => [reviewWordKey(word), word]))
   function hydrate(words: ReviewWord[]): ReviewWord[] | null {
     const hydrated: ReviewWord[] = []
     for (const word of words) {
@@ -194,7 +199,7 @@ export function pruneCheckpoints(state: StudyState): StudyState {
     ...state,
     sessions: Object.fromEntries(
       Object.entries(state.sessions).flatMap(([key, saved]) => {
-        const hydrated = hydrateCheckpoint(saved, state.decks)
+        const hydrated = hydrateCheckpoint(saved, state.decks, state)
         return hydrated ? [[key, hydrated]] : []
       }),
     ),
@@ -390,7 +395,7 @@ export function isCheckpoint(value: unknown): value is ReviewCheckpoint {
     ['id', 'key', 'path', 'title', 'subtitle', 'backPath', 'answer'].every(
       (key) => typeof value[key] === 'string',
     ) &&
-    /^\/(review\/[^/]+|review-weekly\/\d{4}-\d{2}-\d{2}|review-quick\/\d{4}-\d{2}-\d{2}\/(5|10|20)|review-unfamiliar|review-mistakes|review-errors\/(chinese|dictation)|review-today(?:\/\d{4}-\d{2}-\d{2})?)$/.test(
+    /^\/(review\/[^/]+|review-weekly\/\d{4}-\d{2}-\d{2}|review-monthly\/\d{4}-\d{2}-\d{2}|review-random\/(?:phrases\/|sentences\/)?(5|10|20)|review-quick\/\d{4}-\d{2}-\d{2}\/(5|10|20)|review-unfamiliar|review-mistakes|review-errors\/(chinese|dictation)|review-today(?:\/\d{4}-\d{2}-\d{2})?)$/.test(
       String(value.path),
     ) &&
     modes.has(String(value.front)) &&
@@ -405,6 +410,9 @@ export function isCheckpoint(value: unknown): value is ReviewCheckpoint {
     Object.values(value.firstAttempts).every(isAttempt) &&
     Array.isArray(value.shownAnswers) &&
     value.shownAnswers.every((key) => typeof key === 'string') &&
+    (value.randomSeen === undefined ||
+      (Array.isArray(value.randomSeen) &&
+        value.randomSeen.every((key) => typeof key === 'string'))) &&
     (session.phase === 'initial' || session.phase === 'retry') &&
     Array.isArray(session.sequence) &&
     session.sequence.length > 0 &&

@@ -1,13 +1,16 @@
 import { describe, expect, it, vi } from 'vitest'
 import { normalizeDraft } from '../decks/deck.ts'
-import { getWeekRange, shiftWeek } from '../../shared/utils/format.ts'
+import { getMonthRange, getWeekRange, shiftMonth, shiftWeek } from '../../shared/utils/format.ts'
 import {
+  advanceRetry,
   collectReviewWords,
   collectUnfamiliarWords,
   createReviewSession,
   rateReview,
   reviewWordKey,
   selectWeeklyDecks,
+  selectMonthlyDecks,
+  randomReviewBatch,
   updateWordFamiliarity,
 } from './review.ts'
 import { parseDeckFile } from '../../services/transfer.ts'
@@ -28,6 +31,37 @@ function deck(id: string, date: string, words = ['apple', 'book'], createdAt = 1
     })),
   }
 }
+
+describe('monthly and random review', () => {
+  it('includes the whole calendar month and navigates leap years and year boundaries', () => {
+    expect(getMonthRange('2024-02-12')).toEqual({ start: '2024-02-01', end: '2024-02-29' })
+    expect(shiftMonth('2026-12-31', 1)).toBe('2027-01-01')
+    expect(
+      selectMonthlyDecks(
+        [deck('next', '2024-03-01'), deck('last', '2024-02-29'), deck('first', '2024-02-01')],
+        '2024-02-15',
+      ).map((item) => item.id),
+    ).toEqual(['first', 'last'])
+    expect(parseHash('#/review-monthly/2024-02-29')).toEqual({
+      name: 'review-monthly',
+      monthStart: '2024-02-01',
+    })
+    expect(parseHash('#/review-random/10')).toEqual({ name: 'review-random', limit: 10 })
+    expect(parseHash('#/review-monthly/2024-02-30')).toEqual({ name: 'list' })
+  })
+  it('draws from all entries without repeating previous batches and handles exhaustion', () => {
+    const words = collectReviewWords([
+      deck('a', '2026-01-01', ['a', 'b', 'c']),
+      deck('b', '2028-01-01', ['d', 'e', 'f']),
+    ])
+    const first = randomReviewBatch(words, 3)
+    const second = randomReviewBatch(words, 5, first.map(reviewWordKey))
+    expect(first).toHaveLength(3)
+    expect(second).toHaveLength(3)
+    expect(new Set([...first, ...second].map(reviewWordKey)).size).toBe(6)
+    expect(randomReviewBatch(words, 5, [...first, ...second].map(reviewWordKey))).toEqual([])
+  })
+})
 
 describe('weekly collection', () => {
   it.each([
@@ -82,11 +116,14 @@ describe('recognition and one extra pass', () => {
     expect(session.phase).toBe('retry')
     expect(session.sequence.map((word) => word.english)).toEqual(['apple', 'cat'])
     expect(session.retryCount).toBe(2)
-    session = rateReview(session, 'known')
-    session = rateReview(session, 'unknown')
-    expect(session.phase).toBe('done')
-    expect(Object.values(session.ratings).filter((rating) => rating === 'unknown')).toHaveLength(1)
     expect(rateReview(session, 'known')).toBe(session)
+    session = advanceRetry(session)
+    expect(session.sequence[session.cursor]?.english).toBe('cat')
+    session = advanceRetry(session)
+    expect(session.phase).toBe('done')
+    expect(Object.values(session.ratings).filter((rating) => rating === 'unknown')).toHaveLength(2)
+    expect(rateReview(session, 'known')).toBe(session)
+    expect(advanceRetry(session)).toBe(session)
   })
 
   it('finishes immediately after an all-known first pass', () => {
@@ -94,6 +131,19 @@ describe('recognition and one extra pass', () => {
     for (const _word of words) session = rateReview(session, 'known')
     expect(session.phase).toBe('done')
     expect(session.retryCount).toBe(0)
+  })
+
+  it('continues a previously saved retry without changing its existing ratings', () => {
+    let session = createReviewSession(words, 'sequential')
+    for (const _word of words) session = rateReview(session, 'unknown')
+    const legacy = {
+      ...session,
+      cursor: 1,
+      ratings: { [reviewWordKey(words[0]!)]: 'known' as const },
+    }
+    const next = advanceRetry(legacy)
+    expect(next.cursor).toBe(2)
+    expect(next.ratings).toEqual(legacy.ratings)
   })
 
   it('uses a corrected answer when revisiting an earlier card', () => {

@@ -29,7 +29,7 @@ export function addSentence(
   now = Date.now(),
 ): Sentence[] | null {
   const text = english.trim()
-  if (!text) return null
+  if (!text || !chinese.trim()) return null
   return [
     {
       id: crypto.randomUUID(),
@@ -51,7 +51,7 @@ export function updateSentence(
 ): Sentence[] | null {
   const text = english.trim()
   const current = sentences.find((item) => item.id === id)
-  if (!current || !text) return null
+  if (!current || !text || !chinese.trim()) return null
   return sentences.map((item) =>
     item.id === id ? { ...item, english: text, chinese: chinese.trim(), updatedAt: now } : item,
   )

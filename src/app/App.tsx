@@ -10,11 +10,18 @@ import { Button, Flex, Typography } from 'antd'
 import { sortDecks } from '../features/decks/deck.ts'
 import { DeckList } from '../features/decks/pages/DeckList.tsx'
 import { StudyOverview } from '../features/study/components/StudyOverview.tsx'
-import { formatDate, formatDeckHeading, getWeekRange, todayISO } from '../shared/utils/format.ts'
+import {
+  formatDate,
+  formatDeckHeading,
+  getMonthRange,
+  getWeekRange,
+  todayISO,
+} from '../shared/utils/format.ts'
 import {
   collectReviewWords,
   collectUnfamiliarWords,
   selectWeeklyDecks,
+  selectMonthlyDecks,
 } from '../features/study/review.ts'
 import {
   appendLearningRecord,
@@ -22,6 +29,7 @@ import {
   getTodayWords,
   pruneCheckpoints,
   withCheckpoint,
+  hydrateCheckpoint,
   updateReviewWordDetails,
 } from '../features/study/learning.ts'
 import type {
@@ -84,6 +92,14 @@ const UnfamiliarPage = lazy(() =>
 const WeeklyPage = lazy(() =>
   import('../features/study/pages/WeeklyPage.tsx').then((page) => ({ default: page.WeeklyPage })),
 )
+const MonthlyPage = lazy(() =>
+  import('../features/study/pages/MonthlyPage.tsx').then((page) => ({ default: page.MonthlyPage })),
+)
+const TextRandomReviewPage = lazy(() =>
+  import('../features/study/pages/TextRandomReviewPage.tsx').then((page) => ({
+    default: page.TextRandomReviewPage,
+  })),
+)
 const SpellingErrorsPage = lazy(() =>
   import('../features/study/pages/SpellingErrorsPage.tsx').then((page) => ({
     default: page.SpellingErrorsPage,
@@ -138,11 +154,13 @@ function AppPage() {
   const handlePurge = (id: string) => updateTrashResult(purgeTrash(id))
 
   function handleSentences(sentences: Sentence[]): string | void {
-    if (!commit({ ...loadStudyState(), sentences })) return '句子保存失败，请检查浏览器本地存储。'
+    if (!commit(pruneCheckpoints({ ...loadStudyState(), sentences })))
+      return '语句保存失败，请检查浏览器本地存储。'
   }
 
   function handlePhrases(phrases: Phrase[]): string | void {
-    if (!commit({ ...loadStudyState(), phrases })) return '词组保存失败，请检查浏览器本地存储。'
+    if (!commit(pruneCheckpoints({ ...loadStudyState(), phrases })))
+      return '词组保存失败，请检查浏览器本地存储。'
   }
 
   function handleImport(file: ParsedDeckFile): { message: string } | { error: string } {
@@ -163,7 +181,14 @@ function AppPage() {
   }
 
   function handleCheckpoint(key: string, checkpoint: ReviewCheckpoint | null): string | void {
-    if (!commit(withCheckpoint(loadStudyState(), key, checkpoint)))
+    const current = loadStudyState()
+    if (
+      checkpoint &&
+      /^\/review-random\/(phrases|sentences)\//.test(checkpoint.path) &&
+      !hydrateCheckpoint(checkpoint, current.decks, current)
+    )
+      return '内容已修改或删除，请返回练习中心重新开始。'
+    if (!commit(withCheckpoint(current, key, checkpoint)))
       return '复习进度保存失败，请检查浏览器本地存储。'
   }
 
@@ -198,6 +223,7 @@ function AppPage() {
     backPath?: string
     emptyTitle?: string
     initialFront?: FrontSide
+    randomLimit?: number
   }) {
     const { key: sourceKey, ...props } = source
     return (
@@ -216,6 +242,27 @@ function AppPage() {
   }
 
   if (route.name === 'practice') return <PracticePage state={study} />
+  if (route.name === 'review-random-text')
+    return (
+      <TextRandomReviewPage
+        key={`${route.kind}:${route.limit}`}
+        state={study}
+        kind={route.kind}
+        limit={route.limit}
+        onCheckpoint={handleCheckpoint}
+      />
+    )
+  if (route.name === 'review-random')
+    return review({
+      key: `random:${route.limit}`,
+      path: `/review-random/${route.limit}`,
+      words: collectReviewWords(decks),
+      title: '随机复习',
+      subtitle: `从全部单词中随机抽取，每轮最多 ${route.limit} 个`,
+      backPath: '/practice',
+      emptyTitle: '还没有可以复习的单词',
+      randomLimit: route.limit,
+    })
   if (route.name === 'sentences')
     return <SentencePage sentences={study.sentences ?? []} onSave={handleSentences} />
   if (route.name === 'phrases')
@@ -280,6 +327,19 @@ function AppPage() {
       emptyTitle: '这一天的任务已完成，明天再来复习',
     })
   if (route.name === 'weekly') return <WeeklyPage decks={decks} weekStart={route.weekStart} />
+  if (route.name === 'monthly') return <MonthlyPage decks={decks} monthStart={route.monthStart} />
+  if (route.name === 'review-monthly') {
+    const range = getMonthRange(route.monthStart)
+    return review({
+      key: `month:${range.start}`,
+      path: `/review-monthly/${range.start}`,
+      words: collectReviewWords(selectMonthlyDecks(decks, range.start)),
+      title: '整月复习',
+      subtitle: `${formatDate(range.start)} — ${formatDate(range.end)}`,
+      backPath: `/monthly/${range.start}`,
+      emptyTitle: '这个月还没有可以复习的单词',
+    })
+  }
   if (route.name === 'review-weekly') {
     const range = getWeekRange(route.weekStart)
     return review({

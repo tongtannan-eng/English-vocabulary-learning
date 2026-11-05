@@ -23,6 +23,7 @@ import {
   subscribeSpeechAccent,
 } from '../../../services/storage.ts'
 import { ShortcutEditor } from '../components/ShortcutEditor.tsx'
+import { SyncStatusPanel } from '../components/SyncStatusPanel.tsx'
 import { exportBackup, exportSyncBackup, importSyncBackup } from '../../../services/backup.ts'
 import { parseDeckFile } from '../../../services/transfer.ts'
 import type { ParsedDeckFile } from '../../../services/backupTypes.ts'
@@ -44,6 +45,7 @@ export function SettingsPage({
   const rate = useSyncExternalStore(subscribeSpeechRate, loadSpeechRate, () => 0.9 as const)
   const [prefs, setPrefs] = useState(loadPrefs)
   const [error, setError] = useState('')
+  const [syncRefresh, setSyncRefresh] = useState(0)
   const [notice, setNotice] = useState<{
     type: 'success' | 'warning' | 'error'
     text: string
@@ -69,6 +71,7 @@ export function SettingsPage({
   async function exportSync() {
     const result = await exportSyncBackup()
     if (result) setNotice({ type: result.type, text: result.message })
+    setSyncRefresh((value) => value + 1)
   }
   async function importSync() {
     try {
@@ -80,6 +83,8 @@ export function SettingsPage({
       )
     } catch {
       setNotice({ type: 'error', text: '读取同步文件失败，请确认应用通过本地项目启动。' })
+    } finally {
+      setSyncRefresh((value) => value + 1)
     }
   }
   function importFile(event: ChangeEvent<HTMLInputElement>) {
@@ -99,6 +104,7 @@ export function SettingsPage({
           ? { type: 'error', text: result.error }
           : { type: 'success', text: result.message },
       )
+      setSyncRefresh((value) => value + 1)
     }
     reader.onerror = () => setNotice({ type: 'error', text: '文件读取失败，请重新选择。' })
     reader.readAsText(file)
@@ -211,14 +217,32 @@ export function SettingsPage({
               onClose={() => setNotice(null)}
             />
           ) : null}
-          <BackupStatusPanel onExport={backup} />
-          <Flex gap={10} wrap>
-            <Button icon={<UploadOutlined />} onClick={() => fileRef.current?.click()}>
-              导入备份
-            </Button>
-            <Button onClick={exportSync}>导出 Git 同步文件</Button>
-            <Button onClick={importSync}>导入 Git 同步文件</Button>
-          </Flex>
+          <BackupStatusPanel />
+          <SyncStatusPanel refreshKey={syncRefresh} />
+          <div className="backup-actions">
+            <section aria-labelledby="file-backup-label">
+              <Typography.Text strong id="file-backup-label">
+                文件备份
+              </Typography.Text>
+              <p>下载完整备份，或选择备份文件导入。</p>
+              <Flex gap={10} wrap>
+                <Button onClick={backup}>导出全部数据</Button>
+                <Button icon={<UploadOutlined />} onClick={() => fileRef.current?.click()}>
+                  导入备份
+                </Button>
+              </Flex>
+            </section>
+            <section aria-labelledby="git-sync-label">
+              <Typography.Text strong id="git-sync-label">
+                Git 同步
+              </Typography.Text>
+              <p>读写项目中的同步文件，再通过 Git 同步。</p>
+              <Flex gap={10} wrap>
+                <Button onClick={exportSync}>导出 Git 同步文件</Button>
+                <Button onClick={importSync}>导入 Git 同步文件</Button>
+              </Flex>
+            </section>
+          </div>
           <Typography.Paragraph className="settings-note" type="secondary">
             多台电脑同步：先拉取 Git 更新并导入同步文件；学习后导出，再提交并推送。
             文件固定保存在项目的 sync/english-sync.json，无需选择路径；此功能需要通过本地项目启动。

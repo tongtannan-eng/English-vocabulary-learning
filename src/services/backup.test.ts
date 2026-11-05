@@ -7,6 +7,7 @@ import {
   mergeBackup,
 } from './backup.ts'
 import { BACKUP_STATUS_KEY } from './backupStatus.ts'
+import { loadSyncActivity } from './syncStatus.ts'
 import { parseDeckFile } from './transfer.ts'
 import {
   loadStudyState,
@@ -119,6 +120,7 @@ describe('complete backup import/export', () => {
     const request = fetchMock.mock.calls[1]![1] as RequestInit
     expect(parseDeckFile(String(request.body))).toMatchObject({ scope: 'full', decks: [deck] })
     expect(local.has(BACKUP_STATUS_KEY)).toBe(true)
+    expect(loadSyncActivity().exportedAt).toBeGreaterThan(0)
   })
 
   it('records the file revision only after a successful validated import', async () => {
@@ -133,6 +135,7 @@ describe('complete backup import/export', () => {
     expect(local.has('english-daily-sync-revision')).toBe(false)
     expect(await importSyncBackup(() => ({ message: '已导入' }))).toEqual({ message: '已导入' })
     expect(local.get('english-daily-sync-revision')).toBe('rev')
+    expect(loadSyncActivity().importedAt).toBeGreaterThan(0)
   })
 
   function populate(): BackupFile {

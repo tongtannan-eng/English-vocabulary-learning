@@ -27,6 +27,7 @@ import { todayISO } from '../../../shared/utils/format.ts'
 import { loadEditorDraft, saveEditorDraft } from '../../../services/drafts.ts'
 import { findDuplicates } from '../duplicates.ts'
 import { navigate } from '../../../app/router.ts'
+import { editorShortcut } from '../../../services/editorShortcuts.ts'
 import type { Deck, DeletedDraftWord, DraftWord } from '../../../shared/types.ts'
 
 function buildInitialWords(deck?: Deck): DraftWord[] {
@@ -378,7 +379,40 @@ export function DeckEditor({
           <Alert type="error" title={draftError} showIcon style={{ marginBottom: 16 }} />
         ) : null}
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          onKeyDown={(event) => {
+            if (
+              draftConflict ||
+              bulkOpen ||
+              event.defaultPrevented ||
+              document.querySelector(
+                '.suggest-menu, .ant-picker-dropdown:not(.ant-picker-dropdown-hidden)',
+              )
+            )
+              return
+            const shortcut = editorShortcut(event.nativeEvent)
+            const row =
+              event.target instanceof HTMLElement
+                ? event.target.closest<HTMLElement>('[data-word-id]')
+                : null
+            if (!shortcut || (shortcut === 'remove' && !row?.dataset.wordId)) return
+            event.preventDefault()
+            event.stopPropagation()
+            if (shortcut === 'submit') event.currentTarget.requestSubmit()
+            else if (shortcut === 'add') insertAfter(words.length - 1)
+            else if (shortcut === 'remove' && row?.dataset.wordId) {
+              const index = pageWords.findIndex((item) => item.word.id === row.dataset.wordId)
+              const neighbour = pageWords[index + 1] ?? pageWords[index - 1]
+              pendingFocus.current = neighbour?.word.id ?? null
+              removeWord(row.dataset.wordId)
+              if (!neighbour)
+                window.requestAnimationFrame(() =>
+                  document.getElementById('editor-add-word')?.focus(),
+                )
+            } else if (shortcut === 'cancel') leave()
+          }}
+        >
           <fieldset className="stack editor-fields" disabled={draftConflict}>
             <div className="meta-grid">
               <label {...datePopup.triggerProps}>
@@ -388,7 +422,7 @@ export function DeckEditor({
                   onOpenChange={datePopup.onOpenChange}
                   panelRender={(panel) => <div {...datePopup.panelProps}>{panel}</div>}
                   value={date ? dayjs(date) : null}
-                  allowClear={false}
+                  allowClear
                   style={{ width: '100%' }}
                   onChange={(value) => {
                     setError('')
@@ -399,6 +433,7 @@ export function DeckEditor({
               <label>
                 <span className="field-label">名称</span>
                 <Input
+                  allowClear
                   value={title}
                   placeholder="可选，例如：考研核心词"
                   maxLength={40}
@@ -491,8 +526,11 @@ export function DeckEditor({
                 />
               ) : null}
               <Button
+                id="editor-add-word"
                 type="dashed"
                 icon={<PlusOutlined />}
+                title="快捷键：Alt+N"
+                aria-keyshortcuts="Alt+N"
                 onClick={() => insertAfter(words.length - 1)}
               >
                 添加单词
@@ -504,13 +542,24 @@ export function DeckEditor({
                 {draftSaved ? ' · 草稿已自动保存' : ''}
               </Typography.Text>
               <Flex gap={8} wrap>
-                <Button onClick={() => leave()}>取消</Button>
-                <Button type="primary" htmlType="submit">
+                <Button onClick={() => leave()} title="快捷键：Esc" aria-keyshortcuts="Escape">
+                  取消
+                </Button>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  title="快捷键：Command/Ctrl+Enter"
+                  aria-keyshortcuts="Meta+Enter Control+Enter"
+                >
                   保存单词卡
                 </Button>
               </Flex>
             </div>
           </fieldset>
+          <Typography.Paragraph type="secondary" className="editor-shortcut-hint">
+            在编辑区域使用快捷键：Command/Ctrl+Enter 保存 · Alt+N 添加 · 在单词行内按 Command/Ctrl+D
+            删除 · Esc 取消（保留草稿）
+          </Typography.Paragraph>
         </form>
       </main>
       <BulkImportModal

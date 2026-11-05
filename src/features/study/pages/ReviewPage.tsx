@@ -5,7 +5,13 @@ import { Alert, Button, Flex, Input, Progress, Modal, Segmented, Tag, Typography
 import { SpeakButton } from '../components/SpeakButton.tsx'
 import { SpellingPractice } from '../components/SpellingPractice.tsx'
 import { formatDeckHeading } from '../../../shared/utils/format.ts'
-import { createReviewSession, rateReview, reviewWordKey } from '../review.ts'
+import {
+  advanceRetry,
+  createReviewSession,
+  randomReviewBatch,
+  rateReview,
+  reviewWordKey,
+} from '../review.ts'
 import { attemptKey, hydrateCheckpoint, makeLearningRecord } from '../learning.ts'
 import type { LearningRecord, ReviewCheckpoint, ReviewRatingContext } from '../learning.ts'
 import { checkSpelling } from '../spelling.ts'
@@ -40,6 +46,7 @@ interface Props {
   backPath?: string
   emptyTitle?: string
   initialFront?: FrontSide
+  randomLimit?: number
   onRate: (
     word: ReviewWord,
     familiarity: Familiarity,
@@ -69,11 +76,13 @@ export function ReviewPage({
   onSpelling,
   onWordDetails,
   initialFront,
+  randomLimit,
 }: Props) {
   function fresh(
     initialWords: ReviewWord[],
     front = initialFront ?? loadPrefs().front,
     order = loadPrefs().order,
+    previousSeen: string[] = [],
   ): ReviewCheckpoint {
     return {
       id: crypto.randomUUID(),
@@ -91,11 +100,16 @@ export function ReviewPage({
       result: null,
       firstAttempts: {},
       shownAnswers: [],
+      ...(randomLimit
+        ? { randomSeen: [...new Set([...previousSeen, ...initialWords.map(reviewWordKey)])] }
+        : {}),
       updatedAt: Date.now(),
     }
   }
   const [loaded] = useState(() => hydrateCheckpoint(saved, decks))
-  const [checkpoint, setCheckpoint] = useState(() => loaded ?? fresh(words))
+  const [checkpoint, setCheckpoint] = useState(
+    () => loaded ?? fresh(randomLimit ? randomReviewBatch(words, randomLimit) : words),
+  )
   const checkpointRef = useRef(checkpoint)
   const callbacksRef = useRef({ onRate, onCheckpoint, onSpelling })
   const saveTimerRef = useRef<number | undefined>(undefined)
@@ -216,7 +230,7 @@ export function ReviewPage({
   }
 
   function rate(familiarity: Familiarity) {
-    if (!word || !flipped || done) return
+    if (!word || !flipped || session.phase !== 'initial') return
     window.clearTimeout(saveTimerRef.current)
     const next = {
       ...checkpoint,
@@ -276,6 +290,29 @@ export function ReviewPage({
 
   function goNext() {
     if (!word || done) return
+    if (session.phase === 'retry') {
+      if (!flipped) {
+        flip()
+        return
+      }
+      window.clearTimeout(saveTimerRef.current)
+      const next: ReviewCheckpoint = {
+        ...checkpoint,
+        session: advanceRetry(session),
+        flipped: false,
+        answer: '',
+        result: null,
+        updatedAt: Date.now(),
+      }
+      const message = onCheckpoint(next.key, next.session.phase === 'done' ? null : next)
+      if (message) {
+        setError(message)
+        return
+      }
+      setError('')
+      adopt(next)
+      return
+    }
     const rating = session.ratings[reviewWordKey(word)]
     if (!rating) {
       if (!flipped) flip()
@@ -363,9 +400,10 @@ export function ReviewPage({
   function applyReset(action: 'restart' | ReviewOrder) {
     const current = checkpointRef.current
     const next = fresh(
-      action === 'restart' ? words : current.initialWords,
+      action === 'restart' && !randomLimit ? words : current.initialWords,
       current.front,
       action === 'restart' ? current.order : action,
+      current.randomSeen,
     )
     next.updatedAt = Math.max(next.updatedAt, current.updatedAt + 1)
     window.clearTimeout(saveTimerRef.current)
@@ -401,6 +439,21 @@ export function ReviewPage({
     requestReset('restart')
   }
 
+  function continueRandom() {
+    if (!randomLimit) return
+    const batch = randomReviewBatch(words, randomLimit, checkpoint.randomSeen ?? [])
+    if (!batch.length) return
+    const next = fresh(batch, checkpoint.front, checkpoint.order, checkpoint.randomSeen)
+    const message = onCheckpoint(next.key, next)
+    if (message) {
+      setError(message)
+      return
+    }
+    setError('')
+    setResumeNotice(false)
+    adopt(next)
+  }
+
   if (session.initialCount === 0)
     return (
       <main className="page">
@@ -424,7 +477,14 @@ export function ReviewPage({
     : ''
   const backText = word ? (englishFront ? word.chinese : word.english) : ''
   const total = session.sequence.length
-  const remaining = Object.values(session.ratings).filter((rating) => rating === 'unknown').length
+  const remaining = checkpoint.initialWords.filter((item) =>
+    decks
+      .find((deck) => deck.id === item.deckId)
+      ?.words.some((word) => word.id === item.id && word.familiarity === 'unknown'),
+  ).length
+  const remainingRandom = randomLimit
+    ? words.filter((item) => !(checkpoint.randomSeen ?? []).includes(reviewWordKey(item))).length
+    : 0
   const nextReview = checkpoint.initialWords
     .flatMap((item) => {
       const current = decks
@@ -446,6 +506,7 @@ export function ReviewPage({
       >
         <label htmlFor="review-collocations">常用搭配或例句（每行一条）</label>
         <Input.TextArea
+          allowClear
           id="review-collocations"
           rows={4}
           value={editCollocations}
@@ -453,6 +514,7 @@ export function ReviewPage({
         />
         <label htmlFor="review-notes">个人备注</label>
         <Input.TextArea
+          allowClear
           id="review-notes"
           rows={4}
           value={editNotes}
@@ -560,11 +622,13 @@ export function ReviewPage({
         </div>
       </div>
       <Typography.Paragraph type="secondary" className="review-instruction">
-        {dictation
-          ? '先播放发音，再输入听到的单词。'
-          : englishFront
-            ? '先回忆答案，再翻面选择是否认识。'
-            : '看中文输入英文，提交后对照拼写差异，再选择是否认识。'}
+        {session.phase === 'retry'
+          ? '先回忆答案，再查看释义；重练不会改变生词状态。'
+          : dictation
+            ? '先播放发音，再输入听到的单词。'
+            : englishFront
+              ? '先回忆答案，再翻面选择是否认识。'
+              : '看中文输入英文，提交后对照拼写差异，再选择是否认识。'}
       </Typography.Paragraph>
       <Progress
         percent={done ? 100 : (session.cursor / total) * 100}
@@ -580,7 +644,7 @@ export function ReviewPage({
           type="info"
           showIcon
           title={`生词重练：将第一轮不认识的 ${session.retryCount} 个单词再复习一遍。`}
-          description="仍不认识的留在生词本，选择认识后自动移出。"
+          description="先回忆再查看答案；这些词会保留在生词本，供之后复习。"
         />
       ) : null}
       {done ? (
@@ -590,7 +654,7 @@ export function ReviewPage({
             已复习 {session.initialCount} 个单词
             {session.retryCount > 0 ? `，额外重练 ${session.retryCount} 个生词` : ''}。
             {remaining > 0
-              ? `本轮还有 ${remaining} 个不认识的词，已保存在生词本。`
+              ? `本轮有 ${remaining} 个词保留在生词本，可在之后继续复习。`
               : '本轮单词都已标记为认识。'}
           </Typography.Paragraph>
           {nextReview ? (
@@ -599,7 +663,15 @@ export function ReviewPage({
             </Typography.Text>
           ) : null}
           <Flex gap={8} wrap>
-            {words.length > 0 ? (
+            {randomLimit && remainingRandom > 0 ? (
+              <Button type="primary" onClick={continueRandom}>
+                继续学习其他单词（剩余 {remainingRandom} 个）
+              </Button>
+            ) : null}
+            {randomLimit && remainingRandom === 0 ? (
+              <Typography.Text>所有单词都已练过。</Typography.Text>
+            ) : null}
+            {!randomLimit && words.length > 0 ? (
               <Button type="primary" onClick={restart}>
                 再来一轮
               </Button>
@@ -688,7 +760,11 @@ export function ReviewPage({
                     </span>
                     {dictation ? <span className="dictation-meaning">{word.chinese}</span> : null}
                   </div>
-                  <span className="face-hint">回忆后，在下方选择是否认识</span>
+                  <span className="face-hint">
+                    {session.phase === 'retry'
+                      ? '回忆并查看答案后，继续下一张'
+                      : '回忆后，在下方选择是否认识'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -728,7 +804,11 @@ export function ReviewPage({
               ) : null}
             </section>
           ) : null}
-          <div className={flipped ? 'study-nav has-ratings' : 'study-nav'}>
+          <div
+            className={
+              flipped && session.phase === 'initial' ? 'study-nav has-ratings' : 'study-nav'
+            }
+          >
             <Button
               size="large"
               title={`快捷键：${shortcutLabel(shortcuts.previous)}`}
@@ -738,7 +818,17 @@ export function ReviewPage({
             >
               上一张
             </Button>
-            {flipped ? (
+            {flipped && session.phase === 'retry' ? (
+              <Button
+                size="large"
+                type="primary"
+                title={`快捷键：${shortcutLabel(shortcuts.next)}`}
+                aria-keyshortcuts={shortcutAria(shortcuts.next)}
+                onClick={goNext}
+              >
+                {session.cursor === session.sequence.length - 1 ? '完成重练' : '下一张'}
+              </Button>
+            ) : flipped ? (
               <>
                 <Button
                   className="rating-unknown"
@@ -771,16 +861,19 @@ export function ReviewPage({
               </Button>
             )}
           </div>
-          <p className="hint">{shortcutHint(shortcuts)}</p>
+          <p className="hint">{shortcutHint(shortcuts, session.phase === 'retry')}</p>
         </>
       ) : null}
     </main>
   )
 }
 
-function shortcutHint(shortcuts: ReturnType<typeof loadShortcuts>): string {
+function shortcutHint(shortcuts: ReturnType<typeof loadShortcuts>, retry: boolean): string {
   const speak = shortcutLabel(shortcuts.speak)
-  return `${speak} 朗读 · ${shortcutLabel(shortcuts.flip)} 翻面 · ${shortcutLabel(shortcuts.unknown)} 不认识 · ${shortcutLabel(shortcuts.known)} 认识 · ${shortcutLabel(shortcuts.previous)} 上一张 · ${shortcutLabel(shortcuts.next)} 下一张 · 输入时按 ${speakTypingLabel(shortcuts.speak)} 朗读，Enter 提交`
+  const rating = retry
+    ? ''
+    : ` · ${shortcutLabel(shortcuts.unknown)} 不认识 · ${shortcutLabel(shortcuts.known)} 认识`
+  return `${speak} 朗读 · ${shortcutLabel(shortcuts.flip)} 翻面${rating} · ${shortcutLabel(shortcuts.previous)} 上一张 · ${shortcutLabel(shortcuts.next)} 下一张 · 输入时按 ${speakTypingLabel(shortcuts.speak)} 朗读，Enter 提交`
 }
 
 function textSizeClass(text: string): string {

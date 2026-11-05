@@ -104,7 +104,7 @@ export function parseDeckFile(text: string): ParsedDeckFile | { error: string } 
         file.sentences !== undefined ||
         file.phrases !== undefined)
     )
-      return { error: '单组备份不能包含回收站、句子、词组或全局备份记录。' }
+      return { error: '单组备份不能包含回收站、语句、词组或全局备份记录。' }
     if (file.scope !== 'full' && file.scope !== 'decks')
       return { error: '备份范围无法识别，已取消导入。' }
     if (
@@ -113,7 +113,7 @@ export function parseDeckFile(text: string): ParsedDeckFile | { error: string } 
     )
       return { error: '复习进度或草稿格式有误，已取消导入。' }
     if (file.version === 5 && file.sentences !== undefined && !isSentenceList(file.sentences))
-      return { error: '句子数据格式有误，已取消导入。' }
+      return { error: '语句数据格式有误，已取消导入。' }
     if (file.version === 5 && file.phrases !== undefined && !isPhraseList(file.phrases))
       return { error: '词组数据格式有误，已取消导入。' }
     if (file.scope === 'decks' && file.preferences !== undefined)

@@ -115,6 +115,7 @@ export function BulkImportModal({
         </table>
       </div>
       <Input.TextArea
+        allowClear
         aria-label="批量录入原文"
         value={raw}
         onChange={(event) => {
@@ -163,12 +164,14 @@ export function BulkImportModal({
                   />
                   <span className="bulk-row-number">第 {row.line} 行</span>
                   <Input
+                    allowClear
                     aria-label={`第 ${row.line} 行英文`}
                     value={row.english}
                     onChange={(event) => patch(row.id, { english: event.target.value })}
                     placeholder="英文"
                   />
                   <Input
+                    allowClear
                     aria-label={`第 ${row.line} 行释义`}
                     value={row.chinese}
                     onChange={(event) => patch(row.id, { chinese: event.target.value })}

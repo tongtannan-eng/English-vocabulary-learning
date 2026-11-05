@@ -1,6 +1,6 @@
 import type { SpellingMode } from '../features/study/spellingErrors.ts'
 import type { QuickLimit } from '../features/study/quick.ts'
-import { getWeekRange, parseISODate, todayISO } from '../shared/utils/format.ts'
+import { getMonthRange, getWeekRange, parseISODate, todayISO } from '../shared/utils/format.ts'
 
 export type Route =
   | { name: 'list' }
@@ -18,6 +18,10 @@ export type Route =
   | { name: 'review-unfamiliar' }
   | { name: 'weekly'; weekStart: string }
   | { name: 'review-weekly'; weekStart: string }
+  | { name: 'monthly'; monthStart: string }
+  | { name: 'review-monthly'; monthStart: string }
+  | { name: 'review-random'; limit: QuickLimit }
+  | { name: 'review-random-text'; kind: 'phrases' | 'sentences'; limit: QuickLimit }
   | { name: 'review-today'; date: string }
   | { name: 'records' }
   | { name: 'trash' }
@@ -47,6 +51,22 @@ export function parseHash(hash: string): Route {
   if (path === '/unfamiliar') return { name: 'unfamiliar' }
   if (path === '/review-unfamiliar') return { name: 'review-unfamiliar' }
   if (path === '/weekly') return { name: 'weekly', weekStart: getWeekRange().start }
+  if (path === '/monthly') return { name: 'monthly', monthStart: getMonthRange().start }
+  const monthly = /^\/(monthly|review-monthly)\/(\d{4}-\d{2}-\d{2})$/.exec(path)
+  if (monthly?.[2] && parseISODate(monthly[2]))
+    return {
+      name: monthly[1] === 'monthly' ? 'monthly' : 'review-monthly',
+      monthStart: getMonthRange(monthly[2]).start,
+    }
+  const random = /^\/review-random\/(5|10|20)$/.exec(path)
+  if (random?.[1]) return { name: 'review-random', limit: Number(random[1]) as QuickLimit }
+  const randomText = /^\/review-random\/(phrases|sentences)\/(5|10|20)$/.exec(path)
+  if (randomText?.[1] && randomText[2])
+    return {
+      name: 'review-random-text',
+      kind: randomText[1] as 'phrases' | 'sentences',
+      limit: Number(randomText[2]) as QuickLimit,
+    }
   const weekly = /^\/(weekly|review-weekly)\/(\d{4}-\d{2}-\d{2})$/.exec(path)
   if (weekly?.[2] && parseISODate(weekly[2])) {
     return {

@@ -100,6 +100,10 @@ export function ShortcutEditor() {
           '复习、听写、每周复习、生词和错题练习共用这些快捷键，修改后立即生效，并会写入完整备份。可以设置单个键，也可以设置 Command、Ctrl、Alt、Shift 组合键。提交拼写仍是 Enter，离开复习仍是 Esc。'
         }
       </Typography.Paragraph>
+      <Typography.Paragraph type="secondary" className="settings-note">
+        单词卡、词组和语句编辑使用固定快捷键：Command/Ctrl+Enter 保存或添加，Esc 取消；单词卡另支持
+        Alt+N 添加行、Command/Ctrl+D 删除当前行（可撤销）。编辑区快捷键不随上述复习快捷键修改。
+      </Typography.Paragraph>
     </>
   )
 }

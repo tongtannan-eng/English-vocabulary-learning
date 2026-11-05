@@ -35,6 +35,7 @@ import { loadTheme, THEME_STORAGE_KEY } from '../shared/theme/theme.ts'
 import { loadUiPreferences, UI_PREFERENCES_KEY } from './preferences.ts'
 import { loadShortcuts, SHORTCUTS_KEY } from './shortcuts.ts'
 import { APP_DATA_RESTORED } from './events.ts'
+import { recordSyncActivity, SYNC_REVISION_KEY } from './syncStatus.ts'
 import type { BackupFile, ParsedDeckFile } from './backupTypes.ts'
 import type { StudyState } from '../features/study/learning.ts'
 
@@ -101,8 +102,6 @@ export function exportBackup(deckIds?: readonly string[]): {
   }
 }
 
-const SYNC_REVISION_KEY = 'english-daily-sync-revision'
-
 export async function importSyncBackup(
   onImport: (file: ParsedDeckFile) => { message: string } | { error: string },
 ) {
@@ -121,6 +120,8 @@ export async function importSyncBackup(
     } catch {
       return { error: '数据已导入，但无法保存同步状态，请检查浏览器存储。' }
     }
+    if (!recordSyncActivity('importedAt'))
+      return { message: `${result.message}同步已完成，但本机导入时间未能保存。` }
   }
   return result
 }
@@ -156,8 +157,11 @@ export async function exportSyncBackup(): Promise<{
     } catch {
       return { type: 'warning', message: '同步文件已保存，但无法记录版本；下次导出前请先导入。' }
     }
+    const activitySaved = recordSyncActivity('exportedAt')
     if (!saveBackupStatus(file.backupStatus))
       return { type: 'warning', message: '同步文件已生成，但备份记录未能保存。' }
+    if (!activitySaved)
+      return { type: 'warning', message: '同步文件已保存，但本机导出时间未能保存。' }
     return {
       type: 'success',
       message: '同步文件已保存到 sync/english-sync.json，请通过 Git 提交并推送。',

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Button, Input, Popconfirm, Table, Typography } from 'antd'
 import { TopBar } from '../../shared/components/TopBar.tsx'
+import { entryErrorMessage } from './entryValidation.ts'
+import { editorShortcut } from '../../services/editorShortcuts.ts'
 
 interface TextEntry {
   id: string
@@ -43,6 +45,8 @@ export function TextEntryPage<T extends TextEntry>({
   const [chinese, setChinese] = useState('')
   const [editingId, setEditingId] = useState<string | null>(null)
   const [error, setError] = useState('')
+  const [showRequired, setShowRequired] = useState(false)
+  const message = entryErrorMessage(error, showRequired, english, chinese, requiredMessage)
 
   useEffect(() => {
     document.title = `${title} · 每日单词`
@@ -52,16 +56,22 @@ export function TextEntryPage<T extends TextEntry>({
     setEnglish('')
     setChinese('')
     setEditingId(null)
+    setShowRequired(false)
   }
 
   function submit() {
+    if (!english.trim() || !chinese.trim()) {
+      setShowRequired(true)
+      return
+    }
     const next = editingId
       ? update(items, editingId, english, chinese)
       : add(items, english, chinese)
     if (!next) {
-      setError(requiredMessage)
+      setError('当前内容已变化，请重新打开后再试。')
       return
     }
+    setShowRequired(false)
     const failed = onSave(next)
     if (failed) {
       setError(failed)
@@ -76,6 +86,7 @@ export function TextEntryPage<T extends TextEntry>({
     setEnglish(item.english)
     setChinese(item.chinese)
     setError('')
+    setShowRequired(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -87,9 +98,9 @@ export function TextEntryPage<T extends TextEntry>({
           <Typography.Title level={3}>{title}</Typography.Title>
           <Typography.Paragraph type="secondary">{description}</Typography.Paragraph>
         </div>
-        {error ? (
+        {message ? (
           <Typography.Paragraph type="danger" role="alert">
-            {error}
+            {message}
           </Typography.Paragraph>
         ) : null}
         <form
@@ -98,13 +109,26 @@ export function TextEntryPage<T extends TextEntry>({
             event.preventDefault()
             submit()
           }}
+          onKeyDown={(event) => {
+            if (event.defaultPrevented) return
+            const shortcut = editorShortcut(event.nativeEvent)
+            if (shortcut === 'submit') {
+              event.preventDefault()
+              event.currentTarget.requestSubmit()
+            } else if (shortcut === 'cancel' && editingId) {
+              event.preventDefault()
+              resetForm()
+            }
+          }}
         >
           <label>
             <span className="field-label">{englishLabel}</span>
             <Input.TextArea
+              allowClear
               value={english}
               autoSize={{ minRows: 2, maxRows: 6 }}
               maxLength={1000}
+              aria-required="true"
               placeholder={englishPlaceholder}
               onChange={(event) => setEnglish(event.target.value)}
             />
@@ -112,22 +136,37 @@ export function TextEntryPage<T extends TextEntry>({
           <label>
             <span className="field-label">中文</span>
             <Input
+              allowClear
               value={chinese}
               maxLength={1000}
-              placeholder="可以不填"
+              placeholder="请填写中文"
+              aria-required="true"
               onChange={(event) => setChinese(event.target.value)}
             />
           </label>
           <div className="entry-actions">
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              title="快捷键：Command/Ctrl+Enter"
+              aria-keyshortcuts="Meta+Enter Control+Enter"
+            >
               {editingId ? '保存修改' : addLabel}
             </Button>
             {editingId ? (
-              <Button htmlType="button" onClick={resetForm}>
+              <Button
+                htmlType="button"
+                onClick={resetForm}
+                title="快捷键：Esc"
+                aria-keyshortcuts="Escape"
+              >
                 取消
               </Button>
             ) : null}
           </div>
+          <Typography.Text type="secondary" className="entry-shortcut-hint">
+            在表单内使用快捷键：Command/Ctrl+Enter 添加或保存 · Esc 取消编辑
+          </Typography.Text>
         </form>
         <Table<T>
           className="entry-table"

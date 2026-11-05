@@ -4,7 +4,7 @@ import { createBackup, importBackup } from '../../services/backup.ts'
 import { backupSnapshot, compareBackup } from '../../services/backupStatus.ts'
 import { loadStudyState, saveStudyState } from '../../services/storage.ts'
 import { parseDeckFile } from '../../services/transfer.ts'
-import { addPhrase } from './phrases.ts'
+import { addPhrase, updatePhrase } from './phrases.ts'
 import type { Phrase } from '../../shared/types.ts'
 
 const phrase: Phrase = {
@@ -47,6 +47,8 @@ describe('phrase table', () => {
       updatedAt: 2,
     })
     expect(addPhrase([], '   ', '')).toBeNull()
+    expect(addPhrase([], 'look after', ' ')).toBeNull()
+    expect(updatePhrase([phrase], phrase.id, phrase.english, '')).toBeNull()
   })
 
   it('round-trips phrases in a full backup and keeps local phrases for older files', () => {

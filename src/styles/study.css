@@ -608,6 +608,19 @@
   margin-bottom: 12px;
   color: var(--text);
 }
+.random-practice-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.random-practice-heading > span {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+}
 .practice-card.entry-weekly {
   border-top: 3px solid var(--blue-border);
 }

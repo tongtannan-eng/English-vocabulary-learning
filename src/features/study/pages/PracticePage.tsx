@@ -1,25 +1,31 @@
 import { spellingErrors } from '../spellingErrors.ts'
 import { historicalMistakes } from '../mistakes.ts'
-import { useEffect } from 'react'
-import { Button, Card, Typography } from 'antd'
+import { useEffect, useState } from 'react'
+import { Button, Card, Flex, Segmented, Typography } from 'antd'
 import { TopBar } from '../../../shared/components/TopBar.tsx'
 import { QuickPractice } from '../components/QuickPractice.tsx'
-import { selectWeeklyDecks, collectUnfamiliarWords } from '../review.ts'
-import { getWeekRange } from '../../../shared/utils/format.ts'
+import { selectWeeklyDecks, selectMonthlyDecks, collectUnfamiliarWords } from '../review.ts'
+import { getMonthRange, getWeekRange } from '../../../shared/utils/format.ts'
+import { QUICK_LIMITS } from '../quick.ts'
 import { hydrateCheckpoint } from '../learning.ts'
 import type { StudyState } from '../learning.ts'
 
 export function PracticePage({ state }: { state: StudyState }) {
+  const [randomKind, setRandomKind] = useState<'words' | 'phrases' | 'sentences'>('words')
   useEffect(() => {
     document.title = '练习中心 · 每日单词'
   }, [])
   const week = selectWeeklyDecks(state.decks, getWeekRange().start)
   const wordCount = week.reduce((sum, deck) => sum + deck.words.length, 0)
+  const month = selectMonthlyDecks(state.decks, getMonthRange().start)
+  const monthCount = month.reduce((sum, deck) => sum + deck.words.length, 0)
+  const allCount = state.decks.reduce((sum, deck) => sum + deck.words.length, 0)
+  const randomCount = randomKind === 'words' ? allCount : (state[randomKind]?.length ?? 0)
   const spellingErrorCount = spellingErrors(state).length
   const mistakes = historicalMistakes(state).length
   const unfamiliar = collectUnfamiliarWords(state.decks).length
   const resumable = Object.values(state.sessions)
-    .map((saved) => hydrateCheckpoint(saved, state.decks))
+    .map((saved) => hydrateCheckpoint(saved, state.decks, state))
     .filter((saved) => saved !== null)
     .sort((a, b) => b.updatedAt - a.updatedAt)[0]
   return (
@@ -29,7 +35,7 @@ export function PracticePage({ state }: { state: StudyState }) {
         <div className="page-head">
           <Typography.Title level={3}>练习中心</Typography.Title>
           <Typography.Paragraph type="secondary">
-            按今天的时间和目标选择练习。所有模式共用学习记录和复习排期。
+            按今天的时间和目标选择练习。单词练习共用学习记录和复习排期。
           </Typography.Paragraph>
         </div>
         {resumable ? (
@@ -43,6 +49,48 @@ export function PracticePage({ state }: { state: StudyState }) {
         ) : null}
         <QuickPractice state={state} />
         <div className="practice-grid">
+          <Card className="practice-card">
+            <Typography.Title level={4}>随机复习</Typography.Title>
+            <div className="random-practice-heading">
+              <Segmented
+                aria-label="随机复习内容"
+                value={randomKind}
+                options={[
+                  { label: '单词', value: 'words' },
+                  { label: '词组', value: 'phrases' },
+                  { label: '语句', value: 'sentences' },
+                ]}
+                onChange={(value) => setRandomKind(value as typeof randomKind)}
+              />
+              <span>全部 {randomCount} 条</span>
+            </div>
+            <Typography.Paragraph type="secondary">
+              随机抽取所选内容，完成后继续复习其他条目。
+            </Typography.Paragraph>
+            <Flex gap={8} wrap>
+              {QUICK_LIMITS.map((limit) => (
+                <Button
+                  key={limit}
+                  href={`#/review-random/${randomKind === 'words' ? '' : `${randomKind}/`}${limit}`}
+                  disabled={!randomCount}
+                >
+                  复习 {limit} 条
+                </Button>
+              ))}
+            </Flex>
+          </Card>
+          <Card className="practice-card">
+            <Typography.Title level={4}>每月复习</Typography.Title>
+            <div className="practice-count">
+              本月 {month.length} 组 · {monthCount} 个词
+            </div>
+            <Typography.Paragraph type="secondary">
+              按自然月汇总单词，也可以查看其他月份。
+            </Typography.Paragraph>
+            <Button type="primary" href="#/monthly">
+              查看本月
+            </Button>
+          </Card>
           <Card className="practice-card entry-weekly">
             <Typography.Title level={4}>每周复习</Typography.Title>
             <div className="practice-count">

@@ -55,6 +55,19 @@ export function shiftWeek(iso: string, offset: number): string {
   return toISODate(date)
 }
 
+export function getMonthRange(iso = todayISO()): { start: string; end: string } {
+  const date = parseISODate(iso) ?? parseISODate(todayISO())!
+  return {
+    start: toISODate(new Date(date.getFullYear(), date.getMonth(), 1)),
+    end: toISODate(new Date(date.getFullYear(), date.getMonth() + 1, 0)),
+  }
+}
+
+export function shiftMonth(iso: string, offset: number): string {
+  const date = parseISODate(getMonthRange(iso).start)!
+  return toISODate(new Date(date.getFullYear(), date.getMonth() + offset, 1))
+}
+
 export function addDays(iso: string, days: number): string {
   const date = parseISODate(iso) ?? new Date()
   date.setDate(date.getDate() + days)

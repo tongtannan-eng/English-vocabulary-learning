@@ -25,12 +25,14 @@ export function SpeakButton({
   hideWord = false,
   label,
   listenHotkey = false,
+  size,
 }: {
   english: string
   className?: string
   hideWord?: boolean
   label?: string
   listenHotkey?: boolean
+  size?: 'small' | 'middle' | 'large'
 }) {
   const [error, setError] = useState('')
   const requestRef = useRef(0)
@@ -85,6 +87,7 @@ export function SpeakButton({
     <div className={className}>
       <Space.Compact>
         <Button
+          size={size}
           icon={<SoundOutlined />}
           aria-label={`朗读 ${hideWord ? '听写单词' : english}（${selected.label}，${speed.text}）`}
           title={`用${selected.label}朗读 · ${speed.text}${listenHotkey ? ` · 快捷键 ${speakKey}，输入时按 ${speakTypingLabel(shortcuts.speak)}` : ''}`}
@@ -117,6 +120,7 @@ export function SpeakButton({
           }}
         >
           <Button
+            size={size}
             icon={<DownOutlined />}
             aria-label={hideWord ? '选择听写发音' : `选择 ${english} 的发音`}
             title="选择发音"

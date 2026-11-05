@@ -1,7 +1,7 @@
 import { SPEECH_RATE_CHANGED } from './speechRate.ts'
 import { DEFAULT_SHORTCUTS, SHORTCUTS_CHANGED } from './shortcuts.ts'
 import { mistakeSourceKey } from '../features/study/mistakes.ts'
-import type { BackupFile } from './backupTypes.ts'
+import type { ParsedDeckFile } from './backupTypes.ts'
 import { APP_DATA_RESTORED } from './events.ts'
 
 export const BACKUP_STATUS_KEY = 'english-daily-backup-status'
@@ -42,7 +42,7 @@ function signature(value: unknown): string {
     hash = Math.imul(hash ^ text.charCodeAt(index), 16777619)
   return `${text.length}:${(hash >>> 0).toString(16)}`
 }
-export function backupSnapshot(file: BackupFile): BackupSnapshot {
+export function backupSnapshot(file: ParsedDeckFile): BackupSnapshot {
   return {
     mistakes: Object.fromEntries(
       (file.mistakes ?? []).map((entry) => [mistakeSourceKey(entry), signature(entry)]),
@@ -64,12 +64,12 @@ export function backupSnapshot(file: BackupFile): BackupSnapshot {
         }),
       ]),
     ),
-    records: [...new Set(file.records.map((record) => record.id))].sort(),
+    records: [...new Set((file.records ?? []).map((record) => record.id))].sort(),
     drafts: Object.fromEntries(
-      Object.entries(file.drafts).map(([key, draft]) => [key, signature(draft)]),
+      Object.entries(file.drafts ?? {}).map(([key, draft]) => [key, signature(draft)]),
     ),
     sessions: Object.fromEntries(
-      Object.entries(file.sessions).map(([key, saved]) => [key, signature(saved)]),
+      Object.entries(file.sessions ?? {}).map(([key, saved]) => [key, signature(saved)]),
     ),
     trash: Object.fromEntries((file.trash ?? []).map((entry) => [entry.id, signature(entry)])),
     // Navigation and scroll alone must not cause a constant backup warning.

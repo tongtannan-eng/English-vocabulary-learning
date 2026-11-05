@@ -1,6 +1,5 @@
 import { mistakeWordKey } from '../../features/study/mistakes.ts'
 import { useEffect, useReducer } from 'react'
-import { Button } from 'antd'
 import {
   backupSnapshot,
   compareBackup,
@@ -9,7 +8,7 @@ import {
 } from '../../services/backupStatus.ts'
 import { createBackup } from '../../services/backup.ts'
 
-export function BackupStatusPanel({ onExport }: { onExport: () => void }) {
+export function BackupStatusPanel() {
   const [, refresh] = useReducer((value) => value + 1, 0)
   useEffect(() => subscribeBackupSignals(refresh), [])
   const file = createBackup()
@@ -47,7 +46,6 @@ export function BackupStatusPanel({ onExport }: { onExport: () => void }) {
           记录的是文件生成时间，请确认下载文件已保存；单组导出不会更新此记录。
         </small>
       </div>
-      <Button onClick={onExport}>导出全部数据</Button>
     </section>
   )
 }

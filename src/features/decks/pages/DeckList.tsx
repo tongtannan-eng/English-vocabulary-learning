@@ -20,6 +20,7 @@ import type { DeckListView } from '../deckList.ts'
 import { formatDate, formatDeckHeading, isToday } from '../../../shared/utils/format.ts'
 import { exportBackup } from '../../../services/backup.ts'
 import type { Deck } from '../../../shared/types.ts'
+import { SpeakButton } from '../../study/components/SpeakButton.tsx'
 
 const DeckFilters = lazy(() =>
   import('../components/DeckFilters.tsx').then((page) => ({ default: page.DeckFilters })),
@@ -426,7 +427,10 @@ export function DeckList({
                                     <ul>
                                       {deck.words.map((word) => (
                                         <li key={word.id}>
-                                          <span lang="en">{word.english}</span>
+                                          <div className="compact-preview-word">
+                                            <span lang="en">{word.english}</span>
+                                            <SpeakButton english={word.english} size="small" />
+                                          </div>
                                           <span className="compact-preview-meaning">
                                             <span>{word.chinese}</span>
                                             {word.familiarity === 'unknown' ? (

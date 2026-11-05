@@ -10,6 +10,16 @@ import { normalizeDraft } from './deck.ts'
 import { isEditorDraft } from '../../services/drafts.ts'
 
 describe('large-card editing', () => {
+  it('accepts a draft with a cleared date while rejecting malformed dates', () => {
+    const draft = {
+      date: '',
+      title: '',
+      words: [{ id: 'a', english: 'hello', chinese: '' }],
+      updatedAt: 1,
+    }
+    expect(isEditorDraft(draft)).toBe(true)
+    expect(isEditorDraft({ ...draft, date: '2026-02-30' })).toBe(false)
+  })
   it('clears the previous meaning when English changes, while preserving other fields', () => {
     const word = { id: 'a', english: 'apple', chinese: '苹果', notes: '备注' }
     expect(updateEditorEnglish(word, 'apples')).toEqual({ ...word, english: 'apples', chinese: '' })

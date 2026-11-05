@@ -1,6 +1,7 @@
 import type { ThemeConfig } from 'antd'
 
 export type AppTheme = 'classic' | 'vivid'
+export const DEFAULT_THEME: AppTheme = 'vivid'
 export const THEME_STORAGE_KEY = 'english-daily-theme'
 export const themeOptions: { value: AppTheme; label: string }[] = [
   { value: 'classic', label: '黑白' },
@@ -79,9 +80,9 @@ export const palettes = {
 
 export function loadTheme(): AppTheme {
   try {
-    return localStorage.getItem(THEME_STORAGE_KEY) === 'vivid' ? 'vivid' : 'classic'
+    return localStorage.getItem(THEME_STORAGE_KEY) === 'classic' ? 'classic' : DEFAULT_THEME
   } catch {
-    return 'classic'
+    return DEFAULT_THEME
   }
 }
 

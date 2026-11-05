@@ -27,6 +27,20 @@ export function lookupMeanings(dict: LocalDict, english: string): string[] {
   return splitMeanings(translation)
 }
 
+export async function selectFirstMeaning(
+  english: string,
+  isCurrent: () => boolean,
+  select: (value: string) => void,
+  getDictionary: () => Promise<LocalDict> = loadDict,
+): Promise<'selected' | 'missing' | 'stale'> {
+  const dict = await getDictionary()
+  if (!isCurrent()) return 'stale'
+  const first = lookupMeanings(dict, english)[0]
+  if (!first) return 'missing'
+  select(first)
+  return 'selected'
+}
+
 function resolveTranslation(dict: LocalDict, english: string): string {
   const key = normalizeWord(english)
   if (!key) return ''

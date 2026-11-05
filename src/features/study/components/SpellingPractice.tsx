@@ -73,6 +73,7 @@ export function SpellingPractice({
       </label>
       <div className="spelling-input-row">
         <Input
+          allowClear
           id="spelling-answer"
           size="large"
           value={answer}
@@ -87,7 +88,7 @@ export function SpellingPractice({
           aria-describedby={error ? 'spelling-error' : 'spelling-help'}
           onChange={(event) => {
             onAnswerChange(event.target.value)
-            setError('')
+            setError((current) => (current === '请先输入英文，再提交答案。' ? '' : current))
           }}
         />
         <Button size="large" type="primary" htmlType="submit">

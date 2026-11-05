@@ -10,7 +10,7 @@ export function StudyOverview({ state }: { state: StudyState }) {
   const today = learningSummary(state.records)
   const todaySession = hydrateCheckpoint(state.sessions[`daily:${todayISO()}`], state.decks)
   const resumable = Object.values(state.sessions)
-    .map((saved) => hydrateCheckpoint(saved, state.decks))
+    .map((saved) => hydrateCheckpoint(saved, state.decks, state))
     .filter((saved) => saved !== null)
     .sort((a, b) => b.updatedAt - a.updatedAt)[0]
   const hasDraft = Boolean(loadEditorDraft('new'))

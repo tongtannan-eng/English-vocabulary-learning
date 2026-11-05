@@ -139,6 +139,7 @@ export function ChineseField({
         中文释义
       </label>
       <Input
+        allowClear
         id={`${id}-input`}
         value={value}
         placeholder="点击查看释义，也可手动填写"
@@ -155,7 +156,7 @@ export function ChineseField({
         }}
         onKeyDown={(event) => {
           if (event.nativeEvent.isComposing) return
-          if (event.key === 'Escape') {
+          if (event.key === 'Escape' && open) {
             event.preventDefault()
             event.stopPropagation()
             close()
@@ -177,7 +178,14 @@ export function ChineseField({
               })
             return
           }
-          if (event.key !== 'Enter') return
+          if (
+            event.key !== 'Enter' ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.altKey ||
+            event.shiftKey
+          )
+            return
           event.preventDefault()
           if (open && activeIndex >= 0) choose(activeIndex)
           else onEnter()
