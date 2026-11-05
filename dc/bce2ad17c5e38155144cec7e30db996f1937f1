@@ -1,0 +1,136 @@
+.cursor/rules/project.mdc
+  h_645a92a2764a6f 23-24,45
+.devin/rules/project.md
+  h_645a92a2764a6f 33-34,55
+.github/copilot-instructions.md
+  h_645a92a2764a6f 29-30,51
+.windsurf/rules/project.md
+  h_645a92a2764a6f 33-34,55
+AGENTS.md
+  h_645a92a2764a6f 27-28,49
+README.md
+  h_645a92a2764a6f 59
+docs/data-backup.md
+  h_645a92a2764a6f 15-16
+index.html
+  h_645a92a2764a6f 7
+src/app/App.tsx
+  h_645a92a2764a6f 13-19,24,32,95-102,157-158,162-163,184-191,226,245-265,330-342
+src/app/router.ts
+  h_645a92a2764a6f 3,21-24,54-69
+src/features/decks/components/BulkImportModal.tsx
+  h_645a92a2764a6f 118,167,174
+src/features/decks/components/ChineseField.tsx
+  h_645a92a2764a6f 142,159,181-188
+src/features/decks/components/EditorWordRow.tsx
+  h_645a92a2764a6f 1-2,8,28-63,70-74,88-95,104,112,117-127,134-137,141-145,170,180
+src/features/decks/editor.test.ts
+  h_645a92a2764a6f 13-22
+src/features/decks/pages/DeckEditor.tsx
+  h_645a92a2764a6f 30,382-415,425,436,529,532-533,545-553,559-562
+src/features/decks/pages/DeckList.tsx
+  h_645a92a2764a6f 23,430-433
+src/features/decks/suggest.test.ts
+  h_645a92a2764a6f 3,6-62
+src/features/decks/suggest.ts
+  h_645a92a2764a6f 30-43
+src/features/entries/TextEntryPage.tsx
+  h_645a92a2764a6f 4-5,48-49,59,63-66,71,74,89,101,103,112-122,127,131,139,142-143,148-153,157-162,167-169
+src/features/entries/entryValidation.test.ts
+  h_645a92a2764a6f 1-14
+src/features/entries/entryValidation.ts
+  h_645a92a2764a6f 1-10
+src/features/phrases/pages/PhrasePage.tsx
+  h_645a92a2764a6f 17,22
+src/features/phrases/phrases.test.ts
+  h_645a92a2764a6f 7,50-51
+src/features/sentences/pages/SentencePage.tsx
+  h_645a92a2764a6f 16-18,20-23
+src/features/sentences/sentences.test.ts
+  h_645a92a2764a6f 29-30,110-120
+src/features/sentences/sentences.ts
+  h_645a92a2764a6f 32,54
+src/features/settings/components/ShortcutEditor.tsx
+  h_645a92a2764a6f 103-106
+src/features/settings/components/SyncStatusPanel.tsx
+  h_645a92a2764a6f 1-94
+src/features/settings/pages/SettingsPage.tsx
+  h_645a92a2764a6f 26,48,74,86-87,107,220-245
+src/features/study/components/SpeakButton.tsx
+  h_645a92a2764a6f 28,35,90,123
+src/features/study/components/SpellingPractice.tsx
+  h_645a92a2764a6f 76,91
+src/features/study/components/StudyOverview.tsx
+  h_645a92a2764a6f 13
+src/features/study/learning.test.ts
+  h_645a92a2764a6f 15,18,62-104
+src/features/study/learning.ts
+  h_645a92a2764a6f 5,40,175,178-181,202,398,413-415
+src/features/study/pages/MonthlyPage.tsx
+  h_645a92a2764a6f 1-121
+src/features/study/pages/PracticePage.tsx
+  h_645a92a2764a6f 3-4,7-9,14,20-23,28,38,52-93
+src/features/study/pages/ReviewPage.tsx
+  h_645a92a2764a6f 8-14,49,79,85,103-105,110-112,233,293-315,403,406,442-456,480-487,509,517,625-631,647,657,666-674,763-767,807-811,821-831,864,871,873-876
+src/features/study/pages/TextRandomReviewPage.tsx
+  h_645a92a2764a6f 1-221
+src/features/study/review.test.ts
+  h_645a92a2764a6f 3,5,12-13,35-65,119-122,124,126,136-148
+src/features/study/review.ts
+  h_645a92a2764a6f 2-22,46-64,94,100-108,114-121
+src/services/backup.test.ts
+  h_645a92a2764a6f 10,123,138
+src/services/backup.ts
+  h_645a92a2764a6f 38,123-124,160,163-164
+src/services/backupStatus.ts
+  h_645a92a2764a6f 4,45,67,69,72
+src/services/drafts.ts
+  h_645a92a2764a6f 30
+src/services/editorShortcuts.test.ts
+  h_645a92a2764a6f 1-41
+src/services/editorShortcuts.ts
+  h_645a92a2764a6f 1-36
+src/services/syncStatus.test.ts
+  h_645a92a2764a6f 1-85
+src/services/syncStatus.ts
+  h_645a92a2764a6f 1-66
+src/services/transfer.ts
+  h_645a92a2764a6f 107,116
+src/shared/components/BackupStatusPanel.tsx
+  h_645a92a2764a6f 11
+src/shared/components/TopBar.tsx
+  h_645a92a2764a6f 58
+src/shared/theme/theme.test.ts
+  h_645a92a2764a6f 1-31
+src/shared/theme/theme.ts
+  h_645a92a2764a6f 4,83,85
+src/shared/theme/themeContext.ts
+  h_645a92a2764a6f 3,9
+src/shared/utils/format.ts
+  h_645a92a2764a6f 58-70
+src/styles/base.css
+  h_645a92a2764a6f 4,6-8
+src/styles/decks.css
+  h_645a92a2764a6f 238-245
+src/styles/editor.css
+  h_645a92a2764a6f 377-383
+src/styles/sentences.css
+  h_645a92a2764a6f 14-17
+src/styles/settings.css
+  h_645a92a2764a6f 86-126
+src/styles/study.css
+  h_645a92a2764a6f 611-623
+sync/english-sync.json
+  h_645a92a2764a6f 5,126-296,640-645,654-681,685-691,1955-1968
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dcbce2ad17c5e38155144cec7e30db996f1937f1",
+  "prompts": {},
+  "humans": {
+    "h_645a92a2764a6f": {
+      "author": "tongtannan.ttn <tongtannan.ttn@digital-engine.com>"
+    }
+  }
+}
