@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Alert, Button, Empty, Flex, Typography } from 'antd'
+import { App as AntApp, Alert, Button, Empty, Flex, Typography } from 'antd'
 import { SpeakButton } from '../components/SpeakButton.tsx'
 import { TopBar } from '../../../shared/components/TopBar.tsx'
 import { formatDate } from '../../../shared/utils/format.ts'
@@ -13,13 +13,17 @@ export function UnfamiliarPage({
   words: ReviewWord[]
   onRate: (word: ReviewWord, familiarity: Familiarity) => string | void
 }) {
+  const { message: feedback } = AntApp.useApp()
   const [error, setError] = useState('')
   useEffect(() => {
     document.title = '生词本 · 每日单词'
   }, [])
 
   function markKnown(word: ReviewWord) {
-    setError(onRate(word, 'known') || '')
+    const failed = onRate(word, 'known')
+    setError(failed || '')
+    if (failed) void feedback.error(failed)
+    if (!failed) void feedback.success('已标记为认识并移出生词本')
   }
 
   return (

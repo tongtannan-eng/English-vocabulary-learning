@@ -81,7 +81,10 @@ export function backupSnapshot(file: ParsedDeckFile): BackupSnapshot {
             speechRate: file.preferences.speechRate ?? 0.9,
             shortcuts: file.preferences.shortcuts ?? DEFAULT_SHORTCUTS,
             review: file.preferences.review,
-            ui: file.preferences.ui,
+            ui:
+              file.preferences.ui.backupReminder && file.preferences.ui.backupReminder !== 'weekly'
+                ? file.preferences.ui
+                : { collapsedPanels: file.preferences.ui.collapsedPanels },
           }
         : null,
     ),

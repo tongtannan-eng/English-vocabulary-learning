@@ -42,6 +42,7 @@ export const palettes = {
     purpleBg: '#e6e6e2',
     purpleText: '#42423d',
     purpleBorder: '#c9c9c1',
+    exampleHighlight: '#b42318',
   },
   vivid: {
     canvas: '#f5faef',
@@ -75,6 +76,7 @@ export const palettes = {
     purpleBg: '#f5eeff',
     purpleText: '#7044a2',
     purpleBorder: '#dac8ef',
+    exampleHighlight: '#b42318',
   },
 } as const
 

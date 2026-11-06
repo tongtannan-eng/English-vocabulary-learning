@@ -4,7 +4,7 @@ import { HoverDropdown } from '../../../shared/components/HoverDropdown.tsx'
 import { lazy, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
 import { EllipsisOutlined, RightOutlined } from '@ant-design/icons'
-import { Alert, Button, Card, Empty, Tag, Typography } from 'antd'
+import { App as AntApp, Alert, Button, Card, Empty, Tag, Typography } from 'antd'
 import { TopBar } from '../../../shared/components/TopBar.tsx'
 import {
   DECK_PAGE_SIZE,
@@ -44,6 +44,7 @@ export function DeckList({
   overview: ReactNode
   onDelete: (id: string) => TrashResult
 }) {
+  const { message: feedback } = AntApp.useApp()
   const resultsRef = useRef<HTMLDivElement>(null)
   const [undoId, setUndoId] = useState<string | null>(null)
   const [pending, setPending] = useState<Deck | null>(null)
@@ -159,6 +160,7 @@ export function DeckList({
     const result = onDelete(pending.id)
     if ('error' in result) {
       setError(result.error)
+      void feedback.error(result.error)
       return
     }
     updateView({
@@ -167,6 +169,7 @@ export function DeckList({
     })
     setError('')
     setUndoId(result.entryId ?? null)
+    void feedback.success('单词卡已移入回收站')
     setPending(null)
   }
 
@@ -174,6 +177,8 @@ export function DeckList({
     saveDeckListView({ ...viewRef.current, page, scrollY: window.scrollY })
     const result = exportBackup(ids)
     setNotice({ type: result.type, text: result.message })
+    if (result.type === 'error') void feedback.error(result.message)
+    if (result.type === 'warning') void feedback.warning(result.message)
   }
 
   return (
@@ -205,8 +210,10 @@ export function DeckList({
                 size="small"
                 onClick={() => {
                   const result = onRestore(undoId)
-                  if ('error' in result) setError(result.error)
-                  else {
+                  if ('error' in result) {
+                    setError(result.error)
+                    void feedback.error(result.error)
+                  } else {
                     setError('')
                     setUndoId(null)
                     setNotice({ type: 'success', text: result.message })

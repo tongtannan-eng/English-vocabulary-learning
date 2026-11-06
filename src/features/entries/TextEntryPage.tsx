@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Button, Input, Popconfirm, Table, Typography } from 'antd'
+import { App as AntApp, Button, Input, Popconfirm, Table, Typography } from 'antd'
 import { TopBar } from '../../shared/components/TopBar.tsx'
 import { entryErrorMessage } from './entryValidation.ts'
 import { editorShortcut } from '../../services/editorShortcuts.ts'
@@ -41,6 +41,7 @@ export function TextEntryPage<T extends TextEntry>({
   update,
   remove,
 }: Props<T>) {
+  const { message: feedback } = AntApp.useApp()
   const [english, setEnglish] = useState('')
   const [chinese, setChinese] = useState('')
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -62,6 +63,7 @@ export function TextEntryPage<T extends TextEntry>({
   function submit() {
     if (!english.trim() || !chinese.trim()) {
       setShowRequired(true)
+      void feedback.error(requiredMessage)
       return
     }
     const next = editingId
@@ -69,15 +71,18 @@ export function TextEntryPage<T extends TextEntry>({
       : add(items, english, chinese)
     if (!next) {
       setError('当前内容已变化，请重新打开后再试。')
+      void feedback.error('当前内容已变化，请重新打开后再试。')
       return
     }
     setShowRequired(false)
     const failed = onSave(next)
     if (failed) {
       setError(failed)
+      void feedback.error(failed)
       return
     }
     setError('')
+    void feedback.success(editingId ? `${title}修改成功` : `${title}添加成功`)
     resetForm()
   }
 
@@ -202,7 +207,11 @@ export function TextEntryPage<T extends TextEntry>({
                     onConfirm={() => {
                       const failed = onSave(remove(items, item.id))
                       setError(failed ?? '')
-                      if (!failed && editingId === item.id) resetForm()
+                      if (failed) void feedback.error(failed)
+                      if (!failed) {
+                        void feedback.success(`${title}删除成功`)
+                        if (editingId === item.id) resetForm()
+                      }
                     }}
                   >
                     <Button type="link" danger>

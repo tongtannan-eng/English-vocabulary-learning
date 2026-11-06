@@ -2,6 +2,7 @@ import { BulkImportModal } from '../components/BulkImportModal.tsx'
 import { useHoverPopup } from '../../../shared/hooks/useHoverPopup.ts'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import {
+  App as AntApp,
   Alert,
   Button,
   Checkbox,
@@ -62,6 +63,7 @@ export function DeckEditor({
   decks: Deck[]
   onSave: (deck: Deck) => string | void
 }) {
+  const { message: feedback } = AntApp.useApp()
   const datePopup = useHoverPopup()
   const [bulkOpen, setBulkOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -309,11 +311,13 @@ export function DeckEditor({
     event.preventDefault()
     if (!date) {
       setError('请选择学习日期')
+      void feedback.error('请选择学习日期')
       return
     }
     const normalized = normalizeDraft(words, deck?.words)
     if ('error' in normalized) {
       setError(normalized.error)
+      void feedback.error(normalized.error)
       if (normalized.index !== undefined) {
         const invalid = words[normalized.index]
         if (invalid) pendingFocus.current = invalid.id
@@ -336,6 +340,7 @@ export function DeckEditor({
     if (message) {
       submittedRef.current = false
       setError(message)
+      void feedback.error(message)
     } else saveEditorDraft(draftKey, null)
   }
 

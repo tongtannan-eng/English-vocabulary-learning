@@ -7,7 +7,7 @@ export type Route =
   | { name: 'sentences' }
   | { name: 'phrases' }
   | { name: 'practice' }
-  | { name: 'settings' }
+  | { name: 'settings'; section?: 'trash' }
   | { name: 'edit'; deckId?: string }
   | { name: 'review'; deckId: string }
   | { name: 'spelling-errors' }
@@ -34,6 +34,7 @@ export function parseHash(hash: string): Route {
   if (path === '/phrases') return { name: 'phrases' }
   if (path === '/practice') return { name: 'practice' }
   if (path === '/settings') return { name: 'settings' }
+  if (path === '/settings/trash') return { name: 'settings', section: 'trash' }
   if (path === '/new') return { name: 'edit' }
   if (path === '/trash') return { name: 'trash' }
   const quick = /^\/review-quick\/(\d{4}-\d{2}-\d{2})\/(5|10|20)$/.exec(path)

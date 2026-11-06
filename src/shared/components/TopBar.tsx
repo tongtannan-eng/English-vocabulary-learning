@@ -33,7 +33,7 @@ export function TopBar({
       ? '/sentences'
       : path === '/phrases'
         ? '/phrases'
-        : path === '/settings' || path === '/trash'
+        : path === '/settings' || path === '/settings/trash' || path === '/trash'
           ? '/settings'
           : /^\/(practice|weekly|unfamiliar|mistakes|spelling-errors|records)/.test(path)
             ? '/practice'

@@ -5,7 +5,9 @@ export const PANEL_IDS = ['today', 'weekly', 'unfamiliar', 'search'] as const
 export type PanelId = (typeof PANEL_IDS)[number]
 export interface UiPreferences {
   collapsedPanels: PanelId[]
+  backupReminder?: BackupReminderFrequency
 }
+export type BackupReminderFrequency = 'off' | 'weekly' | 'monthly'
 const CHANGED = 'english-daily-ui-changed'
 let fallback: string | null = null
 export const defaultUiPreferences = (): UiPreferences => ({ collapsedPanels: [...PANEL_IDS] })
@@ -13,7 +15,12 @@ export const defaultUiPreferences = (): UiPreferences => ({ collapsedPanels: [..
 export function isUiPreferences(value: unknown): value is UiPreferences {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false
   const panels = (value as Record<string, unknown>).collapsedPanels
+  const reminder = (value as Record<string, unknown>).backupReminder
   return (
+    (reminder === undefined ||
+      reminder === 'off' ||
+      reminder === 'weekly' ||
+      reminder === 'monthly') &&
     Array.isArray(panels) &&
     panels.every((id) => PANEL_IDS.includes(id as PanelId)) &&
     new Set(panels).size === panels.length
@@ -46,7 +53,7 @@ export function togglePanel(id: PanelId) {
   const collapsedPanels = current.collapsedPanels.includes(id)
     ? current.collapsedPanels.filter((item) => item !== id)
     : [...current.collapsedPanels, id]
-  const value = JSON.stringify({ collapsedPanels })
+  const value = JSON.stringify({ ...current, collapsedPanels })
   try {
     localStorage.setItem(UI_PREFERENCES_KEY, value)
     fallback = null
@@ -54,6 +61,20 @@ export function togglePanel(id: PanelId) {
     fallback = value
   }
   window.dispatchEvent(new Event(CHANGED))
+}
+
+export function saveBackupReminder(frequency: BackupReminderFrequency): boolean {
+  try {
+    localStorage.setItem(
+      UI_PREFERENCES_KEY,
+      JSON.stringify({ ...loadUiPreferences(), backupReminder: frequency }),
+    )
+    fallback = null
+    window.dispatchEvent(new Event(CHANGED))
+    return true
+  } catch {
+    return false
+  }
 }
 
 export function subscribeUiPreferences(listener: () => void) {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Alert, Button, Empty, Flex, Modal, Typography } from 'antd'
+import { App as AntApp, Alert, Button, Empty, Flex, Modal, Typography } from 'antd'
 import { TopBar } from '../../../shared/components/TopBar.tsx'
 import { formatDate } from '../../../shared/utils/format.ts'
 import type { StudyState } from '../../study/learning.ts'
@@ -15,6 +15,7 @@ export function TrashPage({
   onRestore: (id: string) => TrashResult
   onPurge: (id: string) => TrashResult
 }) {
+  const { message: feedback } = AntApp.useApp()
   const [notice, setNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [pending, setPending] = useState<TrashEntry | null>(null)
   useEffect(() => {
@@ -22,6 +23,8 @@ export function TrashPage({
   }, [])
   function restore(id: string) {
     const result = onRestore(id)
+    if (!('error' in result)) void feedback.success(result.message)
+    else void feedback.error(result.error)
     setNotice(
       'error' in result
         ? { type: 'error', text: result.error }
@@ -31,6 +34,8 @@ export function TrashPage({
   function purge() {
     if (!pending) return
     const result = onPurge(pending.id)
+    if (!('error' in result)) void feedback.success(result.message)
+    else void feedback.error(result.error)
     setNotice(
       'error' in result
         ? { type: 'error', text: result.error }
@@ -40,7 +45,7 @@ export function TrashPage({
   }
   return (
     <>
-      <TopBar action={<Button href="#/settings">返回偏好与数据</Button>} />
+      <TopBar action={<Button href="#/settings/trash">返回偏好与数据</Button>} />
       <main className="page">
         <div className="page-head">
           <Typography.Title level={3}>回收站</Typography.Title>

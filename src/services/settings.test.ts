@@ -10,6 +10,8 @@ import {
   loadSpeechAccent,
 } from './storage.ts'
 import { parseHash } from '../app/router.ts'
+import { loadUiPreferences, saveBackupReminder, togglePanel } from './preferences.ts'
+import { backupSnapshot } from './backupStatus.ts'
 
 describe('global learning preferences', () => {
   let values: Map<string, string>
@@ -68,9 +70,33 @@ describe('global learning preferences', () => {
     importBackup({ decks: [] })
     expect(JSON.parse(values.get(PREFS_KEY)!)).toEqual({ front: 'dictation', order: 'random' })
   })
+  it('backs up the reminder preference, preserves it when toggling panels and handles failures', () => {
+    const baseline = createBackup()
+    expect(saveBackupReminder('weekly')).toBe(true)
+    expect(backupSnapshot(createBackup())).toEqual(backupSnapshot(baseline))
+    expect(saveBackupReminder('monthly')).toBe(true)
+    togglePanel('today')
+    expect(loadUiPreferences().backupReminder).toBe('monthly')
+    const file = createBackup()
+    saveBackupReminder('off')
+    const parsed = parseDeckFile(JSON.stringify(file))
+    if ('error' in parsed) throw new Error(parsed.error)
+    expect(importBackup(parsed)).not.toHaveProperty('error')
+    expect(loadUiPreferences().backupReminder).toBe('monthly')
+    const storage = localStorage
+    vi.stubGlobal('localStorage', {
+      ...storage,
+      setItem: () => {
+        throw new Error('quota')
+      },
+    })
+    expect(saveBackupReminder('off')).toBe(false)
+    expect(loadUiPreferences().backupReminder).toBe('monthly')
+  })
   it('routes the two new destinations without changing existing practice links', () => {
     expect(parseHash('#/practice')).toEqual({ name: 'practice' })
     expect(parseHash('#/settings')).toEqual({ name: 'settings' })
+    expect(parseHash('#/settings/trash')).toEqual({ name: 'settings', section: 'trash' })
     expect(parseHash('#/review-quick/2026-10-29/5')).toEqual({
       name: 'review-quick',
       date: '2026-10-29',

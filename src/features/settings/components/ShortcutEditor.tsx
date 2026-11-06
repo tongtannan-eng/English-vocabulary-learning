@@ -1,5 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
-import { Alert, Button, Typography } from 'antd'
+import { App as AntApp, Alert, Button, Typography } from 'antd'
 import {
   DEFAULT_SHORTCUTS,
   SHORTCUT_ACTIONS,
@@ -13,6 +13,7 @@ import {
 import type { ShortcutId } from '../../../services/shortcuts.ts'
 
 export function ShortcutEditor() {
+  const { message: feedback } = AntApp.useApp()
   const shortcuts = useSyncExternalStore(subscribeShortcuts, loadShortcuts, loadShortcuts)
   const [recording, setRecording] = useState<ShortcutId | null>(null)
   const [error, setError] = useState('')
@@ -50,23 +51,32 @@ export function ShortcutEditor() {
       const chord = chordFromEvent(event)
       if (!chord) {
         setError('这个按键不能用作快捷键。')
+        void feedback.error('这个按键不能用作快捷键。')
         return
       }
       const result = saveShortcut(id, chord)
       if (result !== true) {
         setError(result)
+        void feedback.error(result)
         return
       }
       setError('')
+      void feedback.success('快捷键已更新')
       setRecording(null)
     }
     window.addEventListener('keydown', onKey, true)
     return () => window.removeEventListener('keydown', onKey, true)
-  }, [recording])
+  }, [recording, feedback])
 
   function reset() {
     setRecording(null)
-    setError(saveShortcuts(DEFAULT_SHORTCUTS) ? '' : '快捷键保存失败，请检查浏览器本地存储。')
+    if (saveShortcuts(DEFAULT_SHORTCUTS)) {
+      setError('')
+      void feedback.success('已恢复默认快捷键')
+    } else {
+      setError('快捷键保存失败，请检查浏览器本地存储。')
+      void feedback.error('快捷键保存失败，请检查浏览器本地存储。')
+    }
   }
 
   return (

@@ -219,6 +219,13 @@ export function matchesShortcut(
   return chordFromEvent(event) === binding
 }
 
+/** Retry advance aliases are available only when they do not override a custom action. */
+export function retryAdvanceAliases(shortcuts: Shortcuts): string[] {
+  return ['Enter', 'Meta+Enter', 'Ctrl+Enter'].filter(
+    (binding) => !SHORTCUT_IDS.some((id) => id !== 'next' && shortcuts[id] === binding),
+  )
+}
+
 export function matchesSpeakShortcut(
   event: Pick<KeyboardEvent, 'code' | 'key' | 'metaKey' | 'ctrlKey' | 'altKey' | 'shiftKey'>,
   binding: string,

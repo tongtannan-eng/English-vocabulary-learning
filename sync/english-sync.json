@@ -2,7 +2,7 @@
   "kind": "english-daily-decks",
   "version": 5,
   "scope": "full",
-  "exportedAt": "2026-11-05T02:03:27.735Z",
+  "exportedAt": "2026-11-06T06:30:35.280Z",
   "trash": [],
   "mistakes": [
     {
@@ -12,7 +12,7 @@
       "deckTitle": "",
       "english": "clog",
       "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
-      "lastUnknownAt": 1793762838708
+      "lastUnknownAt": 1793945486982
     },
     {
       "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
@@ -21,7 +21,52 @@
       "deckTitle": "",
       "english": "swear",
       "chinese": "vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言",
-      "lastUnknownAt": 1793762834616
+      "lastUnknownAt": 1793929669441
+    },
+    {
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "deckDate": "2026-11-05",
+      "deckTitle": "",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "lastUnknownAt": 1793929078042
+    },
+    {
+      "deckId": "4a7f434c-3b30-48d1-861b-bc18bf685e8b",
+      "wordId": "fb55c4a3-6a03-48e5-9004-df5cb03c6b4f",
+      "deckDate": "2026-11-04",
+      "deckTitle": "",
+      "english": "grant",
+      "chinese": "n. 授予, 授予物, 允许 vt. 允许, 承认, 授与",
+      "lastUnknownAt": 1793929043242
+    },
+    {
+      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
+      "wordId": "8e032564-e4f4-4f1e-897c-09400afe0f75",
+      "deckDate": "2026-11-02",
+      "deckTitle": "",
+      "english": "threat",
+      "chinese": "n. 恐吓, 恶兆, 威胁",
+      "lastUnknownAt": 1793928948304
+    },
+    {
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "deckDate": "2026-11-05",
+      "deckTitle": "",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "lastUnknownAt": 1793870759075
+    },
+    {
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "deckDate": "2026-11-05",
+      "deckTitle": "",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "lastUnknownAt": 1793870753286
     },
     {
       "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
@@ -31,15 +76,6 @@
       "english": "contribute",
       "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
       "lastUnknownAt": 1793687252772
-    },
-    {
-      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
-      "wordId": "8e032564-e4f4-4f1e-897c-09400afe0f75",
-      "deckDate": "2026-11-02",
-      "deckTitle": "",
-      "english": "threat",
-      "chinese": "n. 恐吓, 恶兆, 威胁",
-      "lastUnknownAt": 1793669216685
     },
     {
       "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
@@ -124,14 +160,18 @@
     }
   ],
   "backupStatus": {
-    "exportedAt": "2026-11-05T02:03:27.735Z",
+    "exportedAt": "2026-11-06T06:30:35.280Z",
     "origin": "local",
     "snapshot": {
       "mistakes": {
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\",\"[\\\"clog\\\",\\\"n. 障碍, 脚坠 v. 障碍, 阻塞\\\"]\"]": "215:337c4703",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"6674c09b-33df-4a14-9b23-7f49d8c550a4\",\"[\\\"swear\\\",\\\"vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言\\\"]\"]": "233:a99d0757",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\",\"[\\\"clog\\\",\\\"n. 障碍, 脚坠 v. 障碍, 阻塞\\\"]\"]": "215:cc0b019",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"6674c09b-33df-4a14-9b23-7f49d8c550a4\",\"[\\\"swear\\\",\\\"vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言\\\"]\"]": "233:f246a824",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"1a05b345-325e-4afa-980d-850aaf6674b3\",\"[\\\"underestimate\\\",\\\"n. 低估 vt. 低估, 看轻\\\"]\"]": "221:f47bdc77",
+        "[\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\",\"fb55c4a3-6a03-48e5-9004-df5cb03c6b4f\",\"[\\\"grant\\\",\\\"n. 授予, 授予物, 允许 vt. 允许, 承认, 授与\\\"]\"]": "226:91ddeb9",
+        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"8e032564-e4f4-4f1e-897c-09400afe0f75\",\"[\\\"threat\\\",\\\"n. 恐吓, 恶兆, 威胁\\\"]\"]": "211:6620dde7",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"053d3338-dae4-4650-a3d9-c5cc7817a15b\",\"[\\\"capacity\\\",\\\"n. 容量, 能力, 才能, 资格\\\"]\"]": "217:fb583f5",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\",\"[\\\"debt\\\",\\\"n. 债务, 罪过\\\"]\"]": "205:a9b0ea7",
         "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\",\"[\\\"contribute\\\",\\\"vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿\\\"]\"]": "232:8c2c8901",
-        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"8e032564-e4f4-4f1e-897c-09400afe0f75\",\"[\\\"threat\\\",\\\"n. 恐吓, 恶兆, 威胁\\\"]\"]": "211:88f0dddf",
         "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"916f4b52-e8b0-4a53-bc17-89c06228de68\",\"[\\\"inspection\\\",\\\"n. 检验, 检查, 视察\\\"]\"]": "215:77a0a257",
         "[\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\",\"5f7b1b9a-7067-41ca-961f-c2908b4ee474\",\"[\\\"leak\\\",\\\"n. 漏洞, 漏处, 漏出, 泄漏 vi. 漏, 泄漏 vt. 使渗漏\\\"]\"]": "234:19d2c9d8",
         "[\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\",\"61a6d9b6-ed21-4974-98f3-50a5dde527d9\",\"[\\\"bury\\\",\\\"vt. 埋葬, 埋藏\\\"]\"]": "209:613282fc",
@@ -159,21 +199,26 @@
         "[\"b4b9441c-01cc-4bae-9f5c-41d3d9218c17\",\"a0abb7e9-8224-46b1-acfa-f9eac0202e74\"]": "206:9efd8e3d",
         "[\"b4b9441c-01cc-4bae-9f5c-41d3d9218c17\",\"3dccdb46-7575-4cdf-b772-f30deb44ab79\"]": "196:61ae5c1",
         "[\"b4b9441c-01cc-4bae-9f5c-41d3d9218c17\",\"b42cf92e-895d-4634-bfe9-18c7ff5f105c\"]": "202:8bc8c749",
-        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"916f4b52-e8b0-4a53-bc17-89c06228de68\"]": "254:e439f913",
-        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"7e1579f5-7cf7-4e23-a3e8-cb50e4df5153\"]": "304:1afec5e9",
-        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"e85ad8e8-7017-4bf1-bbf4-99e89b191855\"]": "256:1e434bc8",
-        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"8e032564-e4f4-4f1e-897c-09400afe0f75\"]": "251:53f40b19",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\"]": "211:7afad253",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"819e2378-a1af-4801-817d-4f2bcc246bd8\"]": "350:4f8160ff",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\"]": "296:1296ebca",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"d1240487-4708-4f3b-bf07-27c3ed84b169\"]": "200:da651cff",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\"]": "191:ace8df14",
-        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"6674c09b-33df-4a14-9b23-7f49d8c550a4\"]": "274:7de39814",
-        "[\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\",\"c45304d9-4a70-4a7f-9e2b-548540114105\"]": "255:96e212fa",
-        "[\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\",\"fb55c4a3-6a03-48e5-9004-df5cb03c6b4f\"]": "105:da0e81cf",
-        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"5f90d00d-52dd-4a6d-8555-4f866119f019\"]": "102:ad6240c0",
-        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\"]": "84:3ba6f522",
-        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"1a05b345-325e-4afa-980d-850aaf6674b3\"]": "163:b33636f3"
+        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"916f4b52-e8b0-4a53-bc17-89c06228de68\"]": "254:5fcb8d50",
+        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"7e1579f5-7cf7-4e23-a3e8-cb50e4df5153\"]": "304:388615b2",
+        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"e85ad8e8-7017-4bf1-bbf4-99e89b191855\"]": "256:92410f9f",
+        "[\"9375c54d-7624-43e9-8103-02de65e5db21\",\"8e032564-e4f4-4f1e-897c-09400afe0f75\"]": "251:5a422115",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\"]": "211:666b461d",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"819e2378-a1af-4801-817d-4f2bcc246bd8\"]": "350:ca68ccf9",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\"]": "296:4edbbe51",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"d1240487-4708-4f3b-bf07-27c3ed84b169\"]": "200:3682e5a0",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\"]": "255:5905ec7f",
+        "[\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"6674c09b-33df-4a14-9b23-7f49d8c550a4\"]": "272:c5a65160",
+        "[\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\",\"c45304d9-4a70-4a7f-9e2b-548540114105\"]": "255:f8e0fbed",
+        "[\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\",\"fb55c4a3-6a03-48e5-9004-df5cb03c6b4f\"]": "252:c081b881",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"5f90d00d-52dd-4a6d-8555-4f866119f019\"]": "197:b2b0cde8",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\"]": "179:418adb99",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"1a05b345-325e-4afa-980d-850aaf6674b3\"]": "260:444a3942",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"053d3338-dae4-4650-a3d9-c5cc7817a15b\"]": "241:9af5e28c",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\"]": "192:9c201ab7",
+        "[\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\",\"7e47bbdf-9184-4a8a-9b8d-915005999010\"]": "173:57a811e9",
+        "[\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\",\"e4072acf-71c5-48df-9490-0c1e6257e9da\"]": "223:71037191",
+        "[\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\",\"2f8430f1-286b-494e-9dce-a5eae3fa18d2\"]": "313:2eb9eda4"
       },
       "sentences": {
         "4c8ceeef-997e-41b7-a851-cbe01759f7c8": "158:94c8a5a8",
@@ -191,7 +236,8 @@
         "9375c54d-7624-43e9-8103-02de65e5db21": "200:244f3f87",
         "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4": "278:29cda7f0",
         "4a7f434c-3b30-48d1-861b-bc18bf685e8b": "122:5f62bb57",
-        "09f508c8-dadd-4ea6-a05a-a02f60f4687b": "161:c16a223a"
+        "09f508c8-dadd-4ea6-a05a-a02f60f4687b": "278:89c0694a",
+        "48ba1ee5-cdd4-421a-81bd-eb23d5881097": "122:e138afaa"
       },
       "records": [
         "[\"036e23a2-79f0-47fe-8648-5f7963b52dd1\",\"[\\\"initial\\\",\\\"english\\\",\\\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\\\",\\\"c45304d9-4a70-4a7f-9e2b-548540114105\\\"]\",\"recognition\"]",
@@ -200,6 +246,12 @@
         "[\"06acdbd7-0fee-4d16-ade0-3ca1b5d224ea\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"44371687-c83d-4fa4-9c52-b6a134aea087\\\"]\",\"recognition\"]",
         "[\"06acdbd7-0fee-4d16-ade0-3ca1b5d224ea\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"bdbc8e29-0ba9-4592-995b-9e352ca55787\\\"]\",\"recognition\"]",
         "[\"06acdbd7-0fee-4d16-ade0-3ca1b5d224ea\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"f4d3ef4b-e870-425d-87fb-cad08eda0085\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"6674c09b-33df-4a14-9b23-7f49d8c550a4\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"819e2378-a1af-4801-817d-4f2bcc246bd8\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\\\"]\",\"recognition\"]",
+        "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"d1240487-4708-4f3b-bf07-27c3ed84b169\\\"]\",\"recognition\"]",
         "[\"12b6e110-1163-4e2f-8ef0-c4e5ee0dab5f\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"2d232a76-952d-4d84-a0c2-6ccea24192de\\\"]\",\"recognition\"]",
         "[\"12b6e110-1163-4e2f-8ef0-c4e5ee0dab5f\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"31431b2b-9ce8-4b72-a68d-7ced79ee3278\\\"]\",\"recognition\"]",
         "[\"12b6e110-1163-4e2f-8ef0-c4e5ee0dab5f\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"44371687-c83d-4fa4-9c52-b6a134aea087\\\"]\",\"recognition\"]",
@@ -245,6 +297,29 @@
         "[\"3eafaaa1-c48a-40cc-a69e-538228aa6fcb\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"bdbc8e29-0ba9-4592-995b-9e352ca55787\\\"]\",\"recognition\"]",
         "[\"3eafaaa1-c48a-40cc-a69e-538228aa6fcb\",\"[\\\"initial\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"f4d3ef4b-e870-425d-87fb-cad08eda0085\\\"]\",\"recognition\"]",
         "[\"3eafaaa1-c48a-40cc-a69e-538228aa6fcb\",\"[\\\"retry\\\",\\\"english\\\",\\\"8bad7cda-39b4-44bb-958e-ae01e6b3eaa2\\\",\\\"31431b2b-9ce8-4b72-a68d-7ced79ee3278\\\"]\",\"recognition\"]",
+        "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+        "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+        "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+        "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+        "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"7e47bbdf-9184-4a8a-9b8d-915005999010\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"6674c09b-33df-4a14-9b23-7f49d8c550a4\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"819e2378-a1af-4801-817d-4f2bcc246bd8\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"d1240487-4708-4f3b-bf07-27c3ed84b169\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\\\",\\\"c45304d9-4a70-4a7f-9e2b-548540114105\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\\\",\\\"fb55c4a3-6a03-48e5-9004-df5cb03c6b4f\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"7e1579f5-7cf7-4e23-a3e8-cb50e4df5153\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"8e032564-e4f4-4f1e-897c-09400afe0f75\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"916f4b52-e8b0-4a53-bc17-89c06228de68\\\"]\",\"recognition\"]",
+        "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"e85ad8e8-7017-4bf1-bbf4-99e89b191855\\\"]\",\"recognition\"]",
         "[\"8d7f2616-e1e9-4f90-8acb-76aeec4fd137\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
         "[\"8d7f2616-e1e9-4f90-8acb-76aeec4fd137\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
         "[\"8d7f2616-e1e9-4f90-8acb-76aeec4fd137\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"819e2378-a1af-4801-817d-4f2bcc246bd8\\\"]\",\"recognition\"]",
@@ -259,6 +334,18 @@
         "[\"9e669c49-6f2f-4e95-b8cc-4dba2dc0b6ac\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"e85ad8e8-7017-4bf1-bbf4-99e89b191855\\\"]\",\"recognition\"]",
         "[\"9e669c49-6f2f-4e95-b8cc-4dba2dc0b6ac\",\"[\\\"retry\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"8e032564-e4f4-4f1e-897c-09400afe0f75\\\"]\",\"recognition\"]",
         "[\"9e669c49-6f2f-4e95-b8cc-4dba2dc0b6ac\",\"[\\\"retry\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"916f4b52-e8b0-4a53-bc17-89c06228de68\\\"]\",\"recognition\"]",
+        "[\"9fcee3a0-5b27-4039-a151-480c013095e5\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"2f8430f1-286b-494e-9dce-a5eae3fa18d2\\\"]\",\"recognition\"]",
+        "[\"9fcee3a0-5b27-4039-a151-480c013095e5\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"e4072acf-71c5-48df-9490-0c1e6257e9da\\\"]\",\"recognition\"]",
+        "[\"a0b28d86-e924-4fa1-884e-df7aeaf120de\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"2f8430f1-286b-494e-9dce-a5eae3fa18d2\\\"]\",\"recognition\"]",
+        "[\"a0b28d86-e924-4fa1-884e-df7aeaf120de\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"e4072acf-71c5-48df-9490-0c1e6257e9da\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+        "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"initial\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"3319e3a9-a8e4-412c-8a95-2fc4224cd422\\\"]\",\"recognition\"]",
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"initial\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"3af214d4-9ca0-46bf-8a34-d113fde69c9a\\\"]\",\"recognition\"]",
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"initial\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"5f7b1b9a-7067-41ca-961f-c2908b4ee474\\\"]\",\"recognition\"]",
@@ -270,6 +357,12 @@
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"retry\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"5f7b1b9a-7067-41ca-961f-c2908b4ee474\\\"]\",\"recognition\"]",
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"retry\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"61a6d9b6-ed21-4974-98f3-50a5dde527d9\\\"]\",\"recognition\"]",
         "[\"ce175324-0548-4a69-b0e9-4092f1db0156\",\"[\\\"retry\\\",\\\"english\\\",\\\"b8762b1a-5623-4c5d-82a5-11858cfdaaa5\\\",\\\"9c386ca7-c8d2-4e7d-94b6-a7db4d2e5c2d\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+        "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"7e47bbdf-9184-4a8a-9b8d-915005999010\\\"]\",\"recognition\"]",
         "[\"fb7d53c8-21ba-4921-8dfe-a9130f715bb9\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
         "[\"fb7d53c8-21ba-4921-8dfe-a9130f715bb9\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
         "[\"fb7d53c8-21ba-4921-8dfe-a9130f715bb9\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"6674c09b-33df-4a14-9b23-7f49d8c550a4\\\"]\",\"recognition\"]",
@@ -287,9 +380,7 @@
       "drafts": {
         "8bad7cda-39b4-44bb-958e-ae01e6b3eaa2": "1339:24e27756"
       },
-      "sessions": {
-        "deck:269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4": "4634:70ae29c4"
-      },
+      "sessions": {},
       "trash": {},
       "preferences": "292:f7c1420b"
     }
@@ -499,10 +590,10 @@
             "please have your tickets ready for inspection"
           ],
           "familiarity": "known",
-          "reviewedAt": 1793669194929,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-03",
-          "nextReviewDate": "2026-11-04"
+          "reviewedAt": 1793928978584,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "7e1579f5-7cf7-4e23-a3e8-cb50e4df5153",
@@ -512,10 +603,10 @@
             "the system is designed to provide maximum security against toxic spills"
           ],
           "familiarity": "known",
-          "reviewedAt": 1793669181636,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-03",
-          "nextReviewDate": "2026-11-04"
+          "reviewedAt": 1793929048578,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "e85ad8e8-7017-4bf1-bbf4-99e89b191855",
@@ -525,10 +616,10 @@
             "a piece of dark material"
           ],
           "familiarity": "known",
-          "reviewedAt": 1793669174120,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-03",
-          "nextReviewDate": "2026-11-04"
+          "reviewedAt": 1793928971358,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "8e032564-e4f4-4f1e-897c-09400afe0f75",
@@ -538,14 +629,14 @@
             "thousands of railroad jobs came under threat"
           ],
           "familiarity": "unknown",
-          "reviewedAt": 1793669216685,
+          "reviewedAt": 1793928948304,
           "reviewStage": 0,
-          "scheduledOn": "2026-11-03",
-          "nextReviewDate": "2026-11-04"
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
         }
       ],
       "createdAt": 1793588010374,
-      "updatedAt": 1793669216685
+      "updatedAt": 1793929048578
     },
     {
       "id": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
@@ -557,20 +648,20 @@
           "english": "certificate",
           "chinese": "n. 证书, 证明书 vt. 发给证明书, 用证书批准, 用证书证明",
           "familiarity": "known",
-          "reviewedAt": 1793762284274,
-          "reviewStage": 2,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-07"
+          "reviewedAt": 1793945515029,
+          "reviewStage": 3,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-13"
         },
         {
           "id": "819e2378-a1af-4801-817d-4f2bcc246bd8",
           "english": "brief",
           "chinese": "n. 摘要, 简报 a. 简短的, 短暂的 vt. 对...作简报, 摘要, 节录",
           "familiarity": "known",
-          "reviewedAt": 1793762299689,
-          "reviewStage": 2,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-07",
+          "reviewedAt": 1793945507214,
+          "reviewStage": 3,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-13",
           "collocations": [
             "We had a very long meeting yesterday. However, today's meeting is brief! It will only be five minutes."
           ],
@@ -581,10 +672,10 @@
           "english": "contribute",
           "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
           "familiarity": "known",
-          "reviewedAt": 1793762272293,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05",
+          "reviewedAt": 1793945520923,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09",
           "collocations": [
             "the staff who contribute to your sports pages are doing a splendid job"
           ]
@@ -594,20 +685,24 @@
           "english": "strength",
           "chinese": "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力",
           "familiarity": "known",
-          "reviewedAt": 1793762292270,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05"
+          "reviewedAt": 1793945511809,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f",
           "english": "clog",
           "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
           "familiarity": "unknown",
-          "reviewedAt": 1793762838708,
+          "reviewedAt": 1793945486982,
           "reviewStage": 0,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05"
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07",
+          "collocations": [
+            "tourists clog the roads in summer"
+          ],
+          "notes": ""
         },
         {
           "id": "6674c09b-33df-4a14-9b23-7f49d8c550a4",
@@ -616,15 +711,15 @@
           "collocations": [
             "Maria made me swear I would never tell anyone"
           ],
-          "familiarity": "unknown",
-          "reviewedAt": 1793762834616,
-          "reviewStage": 0,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05"
+          "familiarity": "known",
+          "reviewedAt": 1793945501658,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
         }
       ],
       "createdAt": 1793669480037,
-      "updatedAt": 1793762838708
+      "updatedAt": 1793945520923
     },
     {
       "id": "4a7f434c-3b30-48d1-861b-bc18bf685e8b",
@@ -639,19 +734,28 @@
             "Is there any possibility I could change roles?"
           ],
           "familiarity": "known",
-          "reviewedAt": 1793841220521,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-05",
-          "nextReviewDate": "2026-11-06"
+          "reviewedAt": 1793928984558,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "fb55c4a3-6a03-48e5-9004-df5cb03c6b4f",
           "english": "grant",
-          "chinese": "n. 授予, 授予物, 允许 vt. 允许, 承认, 授与"
+          "chinese": "n. 授予, 授予物, 允许 vt. 允许, 承认, 授与",
+          "collocations": [
+            "a grant of land"
+          ],
+          "notes": "土地赠与",
+          "familiarity": "unknown",
+          "reviewedAt": 1793929043242,
+          "reviewStage": 0,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
         }
       ],
       "createdAt": 1793772673402,
-      "updatedAt": 1793841220521
+      "updatedAt": 1793929043242
     },
     {
       "id": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
@@ -661,24 +765,105 @@
         {
           "id": "5f90d00d-52dd-4a6d-8555-4f866119f019",
           "english": "logic",
-          "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性"
+          "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性",
+          "familiarity": "known",
+          "reviewedAt": 1793928551383,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
         },
         {
           "id": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
           "english": "debt",
-          "chinese": "n. 债务, 罪过"
+          "chinese": "n. 债务, 罪过",
+          "familiarity": "known",
+          "reviewedAt": 1793928567040,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
         },
         {
           "id": "1a05b345-325e-4afa-980d-850aaf6674b3",
           "english": "underestimate",
           "chinese": "n. 低估 vt. 低估, 看轻",
+          "familiarity": "unknown",
+          "reviewedAt": 1793929078042,
+          "reviewStage": 0,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07",
           "collocations": [
             "I underestimated the impact of moving home."
           ]
+        },
+        {
+          "id": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+          "english": "capacity",
+          "chinese": "n. 容量, 能力, 才能, 资格",
+          "familiarity": "known",
+          "reviewedAt": 1793928539216,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07",
+          "collocations": [
+            "The stadium's seating capacity"
+          ]
+        },
+        {
+          "id": "2cd4d9c2-ab23-464e-9b9c-de9587867bde",
+          "english": "pigeon",
+          "chinese": "n. 鸽子, 易上当受骗的人, 年轻女子",
+          "familiarity": "known",
+          "reviewedAt": 1793928558626,
+          "reviewStage": 2,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-09"
+        },
+        {
+          "id": "7e47bbdf-9184-4a8a-9b8d-915005999010",
+          "english": "terra",
+          "chinese": "大地",
+          "familiarity": "known",
+          "reviewedAt": 1793928956316,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
         }
       ],
       "createdAt": 1793841906828,
-      "updatedAt": 1793842303435
+      "updatedAt": 1793929078042
+    },
+    {
+      "id": "48ba1ee5-cdd4-421a-81bd-eb23d5881097",
+      "date": "2026-11-06",
+      "title": "",
+      "words": [
+        {
+          "id": "e4072acf-71c5-48df-9490-0c1e6257e9da",
+          "english": "crab",
+          "chinese": "n. 螃蟹, 偏航, 脾气乖戾的人, 沙果 vi. 捕蟹, 偏航, 发牢骚 vt. 使偏航, 抱怨, 破坏",
+          "familiarity": "known",
+          "reviewedAt": 1793945422807,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07"
+        },
+        {
+          "id": "2f8430f1-286b-494e-9dce-a5eae3fa18d2",
+          "english": "pause",
+          "chinese": "n. 暂停, 中止, 停顿, 间歇, 踌躇, 休止符 vi. 暂停, 中止, 停顿, 踌躇",
+          "familiarity": "known",
+          "reviewedAt": 1793945429462,
+          "reviewStage": 1,
+          "scheduledOn": "2026-11-06",
+          "nextReviewDate": "2026-11-07",
+          "collocations": [
+            "she dropped me outside during a brief pause in the rain"
+          ],
+          "notes": "同义词：suspend"
+        }
+      ],
+      "createdAt": 1793931400979,
+      "updatedAt": 1793946613491
     }
   ],
   "sentences": [
@@ -1966,215 +2151,667 @@
       "rating": "known",
       "at": 1793841220521,
       "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793869795767,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5f90d00d-52dd-4a6d-8555-4f866119f019",
+      "english": "logic",
+      "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793869804455,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793869814334,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "2cd4d9c2-ab23-464e-9b9c-de9587867bde",
+      "english": "pigeon",
+      "chinese": "n. 鸽子, 易上当受骗的人, 年轻女子",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793869826713,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793869900659,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "retry",
+      "rating": "unknown",
+      "at": 1793869909223,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "retry",
+      "rating": "unknown",
+      "at": 1793869920179,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"c0967de7-cf0b-40a7-a2d3-90eb84be6be5\",\"[\\\"retry\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+      "sessionId": "c0967de7-cf0b-40a7-a2d3-90eb84be6be5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "retry",
+      "rating": "unknown",
+      "at": 1793869925272,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+      "sessionId": "581d7142-7bc1-48c5-b32e-dab486c9aa7d",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "2cd4d9c2-ab23-464e-9b9c-de9587867bde",
+      "english": "pigeon",
+      "chinese": "n. 鸽子, 易上当受骗的人, 年轻女子",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793870741329,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+      "sessionId": "581d7142-7bc1-48c5-b32e-dab486c9aa7d",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5f90d00d-52dd-4a6d-8555-4f866119f019",
+      "english": "logic",
+      "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793870746546,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+      "sessionId": "581d7142-7bc1-48c5-b32e-dab486c9aa7d",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793870753286,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+      "sessionId": "581d7142-7bc1-48c5-b32e-dab486c9aa7d",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793870759075,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"581d7142-7bc1-48c5-b32e-dab486c9aa7d\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+      "sessionId": "581d7142-7bc1-48c5-b32e-dab486c9aa7d",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793870767868,
+      "day": "2026-11-05"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"7e47bbdf-9184-4a8a-9b8d-915005999010\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "7e47bbdf-9184-4a8a-9b8d-915005999010",
+      "english": "terra",
+      "chinese": "大地",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928210378,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793928227699,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928233421,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928245181,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "2cd4d9c2-ab23-464e-9b9c-de9587867bde",
+      "english": "pigeon",
+      "chinese": "n. 鸽子, 易上当受骗的人, 年轻女子",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928254302,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"dfe521c0-a8dc-45e4-bbae-585dc5a6caf5\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+      "sessionId": "dfe521c0-a8dc-45e4-bbae-585dc5a6caf5",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5f90d00d-52dd-4a6d-8555-4f866119f019",
+      "english": "logic",
+      "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928260299,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f",
+      "english": "clog",
+      "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793928507929,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"d1240487-4708-4f3b-bf07-27c3ed84b169\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "d1240487-4708-4f3b-bf07-27c3ed84b169",
+      "english": "strength",
+      "chinese": "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928531435,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"053d3338-dae4-4650-a3d9-c5cc7817a15b\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "053d3338-dae4-4650-a3d9-c5cc7817a15b",
+      "english": "capacity",
+      "chinese": "n. 容量, 能力, 才能, 资格",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928539216,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5f90d00d-52dd-4a6d-8555-4f866119f019\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5f90d00d-52dd-4a6d-8555-4f866119f019",
+      "english": "logic",
+      "chinese": "n. 逻辑, 逻辑学, 推理的方法, 推理, 逻辑性",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928551383,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"2cd4d9c2-ab23-464e-9b9c-de9587867bde\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "2cd4d9c2-ab23-464e-9b9c-de9587867bde",
+      "english": "pigeon",
+      "chinese": "n. 鸽子, 易上当受骗的人, 年轻女子",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928558626,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"5237b6fc-e182-48c7-81d1-bcb1cff85f82\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "5237b6fc-e182-48c7-81d1-bcb1cff85f82",
+      "english": "debt",
+      "chinese": "n. 债务, 罪过",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928567040,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"819e2378-a1af-4801-817d-4f2bcc246bd8\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "819e2378-a1af-4801-817d-4f2bcc246bd8",
+      "english": "brief",
+      "chinese": "n. 摘要, 简报 a. 简短的, 短暂的 vt. 对...作简报, 摘要, 节录",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928677416,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"8e032564-e4f4-4f1e-897c-09400afe0f75\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
+      "wordId": "8e032564-e4f4-4f1e-897c-09400afe0f75",
+      "english": "threat",
+      "chinese": "n. 恐吓, 恶兆, 威胁",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793928948304,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"7e47bbdf-9184-4a8a-9b8d-915005999010\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "7e47bbdf-9184-4a8a-9b8d-915005999010",
+      "english": "terra",
+      "chinese": "大地",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928956316,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac",
+      "english": "certificate",
+      "chinese": "n. 证书, 证明书 vt. 发给证明书, 用证书批准, 用证书证明",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928962199,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"e85ad8e8-7017-4bf1-bbf4-99e89b191855\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
+      "wordId": "e85ad8e8-7017-4bf1-bbf4-99e89b191855",
+      "english": "material",
+      "chinese": "n. 材料, 物资, 素材, 布料, 资料 a. 物质的, 肉体的, 重要的",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928971358,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"916f4b52-e8b0-4a53-bc17-89c06228de68\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
+      "wordId": "916f4b52-e8b0-4a53-bc17-89c06228de68",
+      "english": "inspection",
+      "chinese": "n. 检验, 检查, 视察",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928978584,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\\\",\\\"c45304d9-4a70-4a7f-9e2b-548540114105\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "4a7f434c-3b30-48d1-861b-bc18bf685e8b",
+      "wordId": "c45304d9-4a70-4a7f-9e2b-548540114105",
+      "english": "possibility",
+      "chinese": "n. 可能性, 可能的事",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793928984558,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"4a7f434c-3b30-48d1-861b-bc18bf685e8b\\\",\\\"fb55c4a3-6a03-48e5-9004-df5cb03c6b4f\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "4a7f434c-3b30-48d1-861b-bc18bf685e8b",
+      "wordId": "fb55c4a3-6a03-48e5-9004-df5cb03c6b4f",
+      "english": "grant",
+      "chinese": "n. 授予, 授予物, 允许 vt. 允许, 承认, 授与",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793929043242,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"9375c54d-7624-43e9-8103-02de65e5db21\\\",\\\"7e1579f5-7cf7-4e23-a3e8-cb50e4df5153\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "9375c54d-7624-43e9-8103-02de65e5db21",
+      "wordId": "7e1579f5-7cf7-4e23-a3e8-cb50e4df5153",
+      "english": "security",
+      "chinese": "n. 安全, 安全性, 防护物, 保安, 可靠性, 担保人, 抵押品, 保证金",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793929048578,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c",
+      "english": "contribute",
+      "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793929057758,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"09f508c8-dadd-4ea6-a05a-a02f60f4687b\\\",\\\"1a05b345-325e-4afa-980d-850aaf6674b3\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "09f508c8-dadd-4ea6-a05a-a02f60f4687b",
+      "wordId": "1a05b345-325e-4afa-980d-850aaf6674b3",
+      "english": "underestimate",
+      "chinese": "n. 低估 vt. 低估, 看轻",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793929078042,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"59d8f684-260f-4f1f-af85-ba464c2a2519\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"6674c09b-33df-4a14-9b23-7f49d8c550a4\\\"]\",\"recognition\"]",
+      "sessionId": "59d8f684-260f-4f1f-af85-ba464c2a2519",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "6674c09b-33df-4a14-9b23-7f49d8c550a4",
+      "english": "swear",
+      "chinese": "vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793929669441,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"a0b28d86-e924-4fa1-884e-df7aeaf120de\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"e4072acf-71c5-48df-9490-0c1e6257e9da\\\"]\",\"recognition\"]",
+      "sessionId": "a0b28d86-e924-4fa1-884e-df7aeaf120de",
+      "deckId": "48ba1ee5-cdd4-421a-81bd-eb23d5881097",
+      "wordId": "e4072acf-71c5-48df-9490-0c1e6257e9da",
+      "english": "crab",
+      "chinese": "n. 螃蟹, 偏航, 脾气乖戾的人, 沙果 vi. 捕蟹, 偏航, 发牢骚 vt. 使偏航, 抱怨, 破坏",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793931712884,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"a0b28d86-e924-4fa1-884e-df7aeaf120de\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"2f8430f1-286b-494e-9dce-a5eae3fa18d2\\\"]\",\"recognition\"]",
+      "sessionId": "a0b28d86-e924-4fa1-884e-df7aeaf120de",
+      "deckId": "48ba1ee5-cdd4-421a-81bd-eb23d5881097",
+      "wordId": "2f8430f1-286b-494e-9dce-a5eae3fa18d2",
+      "english": "pause",
+      "chinese": "n. 暂停, 中止, 停顿, 间歇, 踌躇, 休止符 vi. 暂停, 中止, 停顿, 踌躇",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793931718751,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"9fcee3a0-5b27-4039-a151-480c013095e5\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"e4072acf-71c5-48df-9490-0c1e6257e9da\\\"]\",\"recognition\"]",
+      "sessionId": "9fcee3a0-5b27-4039-a151-480c013095e5",
+      "deckId": "48ba1ee5-cdd4-421a-81bd-eb23d5881097",
+      "wordId": "e4072acf-71c5-48df-9490-0c1e6257e9da",
+      "english": "crab",
+      "chinese": "n. 螃蟹, 偏航, 脾气乖戾的人, 沙果 vi. 捕蟹, 偏航, 发牢骚 vt. 使偏航, 抱怨, 破坏",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945422807,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"9fcee3a0-5b27-4039-a151-480c013095e5\",\"[\\\"initial\\\",\\\"english\\\",\\\"48ba1ee5-cdd4-421a-81bd-eb23d5881097\\\",\\\"2f8430f1-286b-494e-9dce-a5eae3fa18d2\\\"]\",\"recognition\"]",
+      "sessionId": "9fcee3a0-5b27-4039-a151-480c013095e5",
+      "deckId": "48ba1ee5-cdd4-421a-81bd-eb23d5881097",
+      "wordId": "2f8430f1-286b-494e-9dce-a5eae3fa18d2",
+      "english": "pause",
+      "chinese": "n. 暂停, 中止, 停顿, 间歇, 踌躇, 休止符 vi. 暂停, 中止, 停顿, 踌躇",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945429462,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f",
+      "english": "clog",
+      "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "unknown",
+      "at": 1793945486982,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"6674c09b-33df-4a14-9b23-7f49d8c550a4\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "6674c09b-33df-4a14-9b23-7f49d8c550a4",
+      "english": "swear",
+      "chinese": "vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945501658,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"819e2378-a1af-4801-817d-4f2bcc246bd8\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "819e2378-a1af-4801-817d-4f2bcc246bd8",
+      "english": "brief",
+      "chinese": "n. 摘要, 简报 a. 简短的, 短暂的 vt. 对...作简报, 摘要, 节录",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945507214,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"d1240487-4708-4f3b-bf07-27c3ed84b169\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "d1240487-4708-4f3b-bf07-27c3ed84b169",
+      "english": "strength",
+      "chinese": "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945511809,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac",
+      "english": "certificate",
+      "chinese": "n. 证书, 证明书 vt. 发给证明书, 用证书批准, 用证书证明",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945515029,
+      "day": "2026-11-06"
+    },
+    {
+      "id": "[\"083eb2c5-be91-4a43-827e-b558a8af28b5\",\"[\\\"initial\\\",\\\"english\\\",\\\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\\\",\\\"2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c\\\"]\",\"recognition\"]",
+      "sessionId": "083eb2c5-be91-4a43-827e-b558a8af28b5",
+      "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
+      "wordId": "2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c",
+      "english": "contribute",
+      "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
+      "mode": "english",
+      "kind": "recognition",
+      "round": "initial",
+      "rating": "known",
+      "at": 1793945520923,
+      "day": "2026-11-06"
     }
   ],
-  "sessions": {
-    "deck:269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4": {
-      "id": "083eb2c5-be91-4a43-827e-b558a8af28b5",
-      "key": "deck:269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-      "path": "/review/269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-      "title": "11月3日",
-      "subtitle": "2026年11月3日 星期二",
-      "backPath": "/",
-      "front": "english",
-      "order": "random",
-      "session": {
-        "phase": "initial",
-        "sequence": [
-          {
-            "id": "8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f",
-            "english": "clog",
-            "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
-            "familiarity": "unknown",
-            "reviewedAt": 1793762838708,
-            "reviewStage": 0,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-05",
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          },
-          {
-            "id": "6674c09b-33df-4a14-9b23-7f49d8c550a4",
-            "english": "swear",
-            "chinese": "vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言",
-            "collocations": [
-              "Maria made me swear I would never tell anyone"
-            ],
-            "familiarity": "unknown",
-            "reviewedAt": 1793762834616,
-            "reviewStage": 0,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-05",
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          },
-          {
-            "id": "819e2378-a1af-4801-817d-4f2bcc246bd8",
-            "english": "brief",
-            "chinese": "n. 摘要, 简报 a. 简短的, 短暂的 vt. 对...作简报, 摘要, 节录",
-            "familiarity": "known",
-            "reviewedAt": 1793762299689,
-            "reviewStage": 2,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-07",
-            "collocations": [
-              "We had a very long meeting yesterday. However, today's meeting is brief! It will only be five minutes."
-            ],
-            "notes": "short",
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          },
-          {
-            "id": "d1240487-4708-4f3b-bf07-27c3ed84b169",
-            "english": "strength",
-            "chinese": "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力",
-            "familiarity": "known",
-            "reviewedAt": 1793762292270,
-            "reviewStage": 1,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-05",
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          },
-          {
-            "id": "4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac",
-            "english": "certificate",
-            "chinese": "n. 证书, 证明书 vt. 发给证明书, 用证书批准, 用证书证明",
-            "familiarity": "known",
-            "reviewedAt": 1793762284274,
-            "reviewStage": 2,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-07",
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          },
-          {
-            "id": "2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c",
-            "english": "contribute",
-            "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
-            "familiarity": "known",
-            "reviewedAt": 1793762272293,
-            "reviewStage": 1,
-            "scheduledOn": "2026-11-04",
-            "nextReviewDate": "2026-11-05",
-            "collocations": [
-              "the staff who contribute to your sports pages are doing a splendid job"
-            ],
-            "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-            "deckDate": "2026-11-03",
-            "deckTitle": ""
-          }
-        ],
-        "cursor": 0,
-        "ratings": {},
-        "initialCount": 6,
-        "retryCount": 0
-      },
-      "initialWords": [
-        {
-          "id": "4e2b5757-90f5-4c86-8fb6-844ccb6eb7ac",
-          "english": "certificate",
-          "chinese": "n. 证书, 证明书 vt. 发给证明书, 用证书批准, 用证书证明",
-          "familiarity": "known",
-          "reviewedAt": 1793762284274,
-          "reviewStage": 2,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-07",
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        },
-        {
-          "id": "819e2378-a1af-4801-817d-4f2bcc246bd8",
-          "english": "brief",
-          "chinese": "n. 摘要, 简报 a. 简短的, 短暂的 vt. 对...作简报, 摘要, 节录",
-          "familiarity": "known",
-          "reviewedAt": 1793762299689,
-          "reviewStage": 2,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-07",
-          "collocations": [
-            "We had a very long meeting yesterday. However, today's meeting is brief! It will only be five minutes."
-          ],
-          "notes": "short",
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        },
-        {
-          "id": "2c3f6b45-634a-4a0a-9a4d-ffc222e32d0c",
-          "english": "contribute",
-          "chinese": "vt. 有助于, 捐助, 投稿 vi. 出力, 捐献, 投稿",
-          "familiarity": "known",
-          "reviewedAt": 1793762272293,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05",
-          "collocations": [
-            "the staff who contribute to your sports pages are doing a splendid job"
-          ],
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        },
-        {
-          "id": "d1240487-4708-4f3b-bf07-27c3ed84b169",
-          "english": "strength",
-          "chinese": "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力",
-          "familiarity": "known",
-          "reviewedAt": 1793762292270,
-          "reviewStage": 1,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05",
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        },
-        {
-          "id": "8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f",
-          "english": "clog",
-          "chinese": "n. 障碍, 脚坠 v. 障碍, 阻塞",
-          "familiarity": "unknown",
-          "reviewedAt": 1793762838708,
-          "reviewStage": 0,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05",
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        },
-        {
-          "id": "6674c09b-33df-4a14-9b23-7f49d8c550a4",
-          "english": "swear",
-          "chinese": "vt. 发誓, 咒骂, 使宣誓 vi. 发誓, 诅咒 n. 诅咒, 誓言",
-          "collocations": [
-            "Maria made me swear I would never tell anyone"
-          ],
-          "familiarity": "unknown",
-          "reviewedAt": 1793762834616,
-          "reviewStage": 0,
-          "scheduledOn": "2026-11-04",
-          "nextReviewDate": "2026-11-05",
-          "deckId": "269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4",
-          "deckDate": "2026-11-03",
-          "deckTitle": ""
-        }
-      ],
-      "flipped": true,
-      "answer": "",
-      "result": null,
-      "firstAttempts": {},
-      "shownAnswers": [
-        "[\"initial\",\"269fecd4-00b8-4ea2-84a6-7db9ffb2d8e4\",\"8a82b5e1-3d24-4fb7-b20a-26ca6d18a92f\"]"
-      ],
-      "updatedAt": 1793763110668
-    }
-  },
+  "sessions": {},
   "drafts": {
     "8bad7cda-39b4-44bb-958e-ae01e6b3eaa2": {
       "date": "2026-10-29",

@@ -9,6 +9,7 @@ import {
   loadShortcuts,
   matchesShortcut,
   matchesSpeakShortcut,
+  retryAdvanceAliases,
   saveShortcut,
   shortcutLabel,
   saveShortcuts,
@@ -88,6 +89,14 @@ describe('global shortcut preferences and backup', () => {
     expect(matchesSpeakShortcut(altP, 'KeyP', true)).toBe(true)
     expect(matchesSpeakShortcut(commandP, 'Meta+KeyP', true)).toBe(true)
     expect(matchesSpeakShortcut(letterP, 'Meta+KeyP', false)).toBe(false)
+  })
+
+  it('allows retry advance aliases without overriding custom shortcut bindings', () => {
+    expect(retryAdvanceAliases(DEFAULT_SHORTCUTS)).toEqual(['Enter', 'Meta+Enter', 'Ctrl+Enter'])
+    expect(
+      retryAdvanceAliases({ ...DEFAULT_SHORTCUTS, known: 'Enter', speak: 'Meta+Enter' }),
+    ).toEqual(['Ctrl+Enter'])
+    expect(retryAdvanceAliases({ ...DEFAULT_SHORTCUTS, next: 'Enter' })).toContain('Enter')
   })
 
   it('notifies open pages and keeps the previous keys when saving fails', () => {

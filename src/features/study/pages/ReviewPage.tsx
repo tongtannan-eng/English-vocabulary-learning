@@ -1,7 +1,19 @@
 import { hasReviewWork } from '../reset.ts'
+import { highlightExample } from '../highlightExample.ts'
 import { ThemeSwitcher } from '../../../shared/components/ThemeSwitcher.tsx'
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
-import { Alert, Button, Flex, Input, Progress, Modal, Segmented, Tag, Typography } from 'antd'
+import {
+  App as AntApp,
+  Alert,
+  Button,
+  Flex,
+  Input,
+  Progress,
+  Modal,
+  Segmented,
+  Tag,
+  Typography,
+} from 'antd'
 import { SpeakButton } from '../components/SpeakButton.tsx'
 import { SpellingPractice } from '../components/SpellingPractice.tsx'
 import { formatDeckHeading } from '../../../shared/utils/format.ts'
@@ -22,6 +34,7 @@ import {
   loadShortcuts,
   matchesShortcut,
   matchesSpeakShortcut,
+  retryAdvanceAliases,
   shortcutAria,
   shortcutLabel,
   speakTypingLabel,
@@ -78,6 +91,7 @@ export function ReviewPage({
   initialFront,
   randomLimit,
 }: Props) {
+  const { message: feedback } = AntApp.useApp()
   function fresh(
     initialWords: ReviewWord[],
     front = initialFront ?? loadPrefs().front,
@@ -182,11 +196,13 @@ export function ReviewPage({
     )
     if (typeof result === 'string') {
       setEditError(result)
+      void feedback.error(result)
       return
     }
     adopt(result)
     setError('')
     setEditOpen(false)
+    void feedback.success('例句和备注已保存')
   }
 
   function update(next: ReviewCheckpoint, defer = false) {
@@ -355,6 +371,20 @@ export function ReviewPage({
       }
       if (typing && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey) return
       if (done) return
+      const otherControl =
+        target instanceof HTMLElement &&
+        Boolean(target.closest('button, a, input, textarea, select, [contenteditable="true"]')) &&
+        !target.closest('button[data-retry-advance]')
+      if (
+        session.phase === 'retry' &&
+        flipped &&
+        !otherControl &&
+        retryAdvanceAliases(shortcuts).some((binding) => matchesShortcut(event, binding))
+      ) {
+        event.preventDefault()
+        goNext()
+        return
+      }
       if (matchesShortcut(event, shortcuts.flip)) {
         const onControl = target instanceof HTMLElement && Boolean(target.closest('button, a'))
         if (shortcuts.flip === 'Space' && onControl) return
@@ -790,7 +820,15 @@ export function ReviewPage({
                   <ul>
                     {word.collocations.map((sentence, index) => (
                       <li key={index} lang="en">
-                        {sentence}
+                        {highlightExample(sentence, word.english).map((part, partIndex) =>
+                          part.highlight ? (
+                            <strong className="example-highlight" key={partIndex}>
+                              {part.text}
+                            </strong>
+                          ) : (
+                            part.text
+                          ),
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -822,8 +860,15 @@ export function ReviewPage({
               <Button
                 size="large"
                 type="primary"
-                title={`快捷键：${shortcutLabel(shortcuts.next)}`}
-                aria-keyshortcuts={shortcutAria(shortcuts.next)}
+                data-retry-advance
+                title={`快捷键：${[shortcuts.next, ...retryAdvanceAliases(shortcuts)]
+                  .filter((binding, index, all) => all.indexOf(binding) === index)
+                  .map(shortcutLabel)
+                  .join(' / ')}`}
+                aria-keyshortcuts={[shortcuts.next, ...retryAdvanceAliases(shortcuts)]
+                  .filter((binding, index, all) => all.indexOf(binding) === index)
+                  .map(shortcutAria)
+                  .join(' ')}
                 onClick={goNext}
               >
                 {session.cursor === session.sequence.length - 1 ? '完成重练' : '下一张'}
@@ -873,7 +918,11 @@ function shortcutHint(shortcuts: ReturnType<typeof loadShortcuts>, retry: boolea
   const rating = retry
     ? ''
     : ` · ${shortcutLabel(shortcuts.unknown)} 不认识 · ${shortcutLabel(shortcuts.known)} 认识`
-  return `${speak} 朗读 · ${shortcutLabel(shortcuts.flip)} 翻面${rating} · ${shortcutLabel(shortcuts.previous)} 上一张 · ${shortcutLabel(shortcuts.next)} 下一张 · 输入时按 ${speakTypingLabel(shortcuts.speak)} 朗读，Enter 提交`
+  const next = [shortcuts.next, ...(retry ? retryAdvanceAliases(shortcuts) : [])]
+    .filter((binding, index, all) => all.indexOf(binding) === index)
+    .map(shortcutLabel)
+    .join('/')
+  return `${speak} 朗读 · ${shortcutLabel(shortcuts.flip)} 翻面${rating} · ${shortcutLabel(shortcuts.previous)} 上一张 · ${next} 下一张 · 输入时按 ${speakTypingLabel(shortcuts.speak)} 朗读，Enter 提交`
 }
 
 function textSizeClass(text: string): string {

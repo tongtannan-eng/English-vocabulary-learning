@@ -203,6 +203,11 @@
   overflow-wrap: anywhere;
 }
 
+.example-highlight {
+  color: var(--example-highlight);
+  font-weight: 600;
+}
+
 .review-word-details > div + div {
   margin-top: 16px;
 }

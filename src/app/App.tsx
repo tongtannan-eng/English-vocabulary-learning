@@ -6,7 +6,7 @@ import { trashDeck, restoreTrash, purgeTrash } from '../services/trash.ts'
 import type { TrashResult } from '../services/trash.ts'
 import { quickKey, quickPath, quickWords } from '../features/study/quick.ts'
 import { lazy, Suspense, useEffect, useLayoutEffect, useState } from 'react'
-import { Button, Flex, Typography } from 'antd'
+import { App as AntApp, Button, Flex, Typography } from 'antd'
 import { sortDecks } from '../features/decks/deck.ts'
 import { DeckList } from '../features/decks/pages/DeckList.tsx'
 import { StudyOverview } from '../features/study/components/StudyOverview.tsx'
@@ -107,6 +107,7 @@ const SpellingErrorsPage = lazy(() =>
 )
 
 function AppPage() {
+  const { message } = AntApp.useApp()
   const [route, setRoute] = useState<Route>(() => parseHash(window.location.hash))
   const [study, setStudy] = useState(loadStudyState)
   const { decks, records, sessions } = study
@@ -140,8 +141,10 @@ function AppPage() {
 
   function handleSave(deck: Deck): string | void {
     const current = loadStudyState()
+    const isEditing = current.decks.some((item) => item.id === deck.id)
     if (!commit(pruneCheckpoints({ ...current, decks: upsertDeck(current.decks, deck) })))
       return '保存失败，浏览器可能禁止了本地存储。'
+    void message.success(isEditing ? '单词卡保存成功' : '单词卡创建成功')
     navigate('/')
   }
 
@@ -268,7 +271,14 @@ function AppPage() {
   if (route.name === 'phrases')
     return <PhrasePage phrases={study.phrases ?? []} onSave={handlePhrases} />
   if (route.name === 'settings')
-    return <SettingsPage trashCount={study.trash?.length ?? 0} onImport={handleImport} />
+    return (
+      <SettingsPage
+        key={route.section ?? 'learning'}
+        initialSection={route.section}
+        trashCount={study.trash?.length ?? 0}
+        onImport={handleImport}
+      />
+    )
   if (route.name === 'trash')
     return <TrashPage state={study} onRestore={handleRestore} onPurge={handlePurge} />
   if (route.name === 'review-quick')
